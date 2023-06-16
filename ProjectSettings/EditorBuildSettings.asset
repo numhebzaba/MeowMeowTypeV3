@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Custom_Mode.unity
     guid: 63ba7dfb390f26d448b858c2847e9908
+  - enabled: 1
+    path: Assets/Scenes/test_model.unity
+    guid: f524b88d26d08ac4cbad22b682bf2ed9
   m_configObjects: {}

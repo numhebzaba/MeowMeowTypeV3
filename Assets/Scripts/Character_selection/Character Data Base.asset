@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a6ec5a68c202b4f86b2314b6ec7c61, type: 3}
+  m_Name: Character Data Base
+  m_EditorClassIdentifier: 
+  character:
+  - characterName: 01
+    CharacterPrefab: {fileID: 8477643386457636440, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
+  - characterName: 02
+    CharacterPrefab: {fileID: 3128855014192089941, guid: 12348fc04884c514184365cc4df792af, type: 3}
+  - characterName: 03
+    CharacterPrefab: {fileID: 8085252723492411181, guid: 824cb3d3a8a9e6b489447271ad157fad, type: 3}
+  - characterName: 04
+    CharacterPrefab: {fileID: 5724769215849139585, guid: 720e20d598733f74699ef0e5413891c8, type: 3}
+  - characterName: 05
+    CharacterPrefab: {fileID: 7285972052203900814, guid: 82f864f3c3980f54884017918a66727e, type: 3}
+  - characterName: 06
+    CharacterPrefab: {fileID: 6901403761132674612, guid: 6bcde8da7d11c3145b1ffa422536ddff, type: 3}
+  - characterName: 07
+    CharacterPrefab: {fileID: 5616669764911222607, guid: baa36186587bd9d4ab769976bbfb187e, type: 3}
+  - characterName: 08
+    CharacterPrefab: {fileID: 6300174817881983559, guid: 2a1777b46cb191d409ae3f72d74cea05, type: 3}
+  - characterName: 09
+    CharacterPrefab: {fileID: 2991976268598403639, guid: 3acf5afc1f4c12347b6b848fb484e41a, type: 3}
+  - characterName: 10
+    CharacterPrefab: {fileID: 8014973823926640555, guid: b4fc71ddd6a39e142926411a5f8147de, type: 3}
