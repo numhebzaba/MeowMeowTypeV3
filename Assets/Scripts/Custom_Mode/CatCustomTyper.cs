@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class CustomTyper : MonoBehaviour
+public class CatCustomTyper : MonoBehaviour
 {
     public CustomWordList TutorialwordList = null;
     public TMP_Text wordOutput = null;
@@ -38,7 +38,7 @@ public class CustomTyper : MonoBehaviour
     private string remainWordIsTrue = string.Empty;
     public List<ListLetters> DataLetterList = new List<ListLetters>();
 
-    public animationStateControllerByType animationStateController;
+    public AnimatorControllerState animationStateController;
     public Animator BGanimator;
 
 
@@ -165,8 +165,8 @@ public class CustomTyper : MonoBehaviour
             CheckLetter(typedLetter);
             RemoveLetter();
             BGanimator.speed = 1; //play background animation//
-            animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
-            animationStateController.animator.SetBool(animationStateController.isWalkingHash, true);
+            //animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
+            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 24);
 
             if (IsWordComplete())
             {
@@ -182,7 +182,8 @@ public class CustomTyper : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         BGanimator.speed = 0; //Pause background animation//
-        animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
 
 
         foreach (var letter in DataLetterList)
@@ -217,7 +218,7 @@ public class CustomTyper : MonoBehaviour
         string newString = remainWord.Remove(0, 1);
         wordOutputIsTrue.text += remainWord[0];
 
-        if(wordOutputIsTrue.text.Length > 17)
+        if (wordOutputIsTrue.text.Length > 25)
         {
             DeleteWordIstrue();
         }
