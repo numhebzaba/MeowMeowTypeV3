@@ -36,6 +36,7 @@ public class CustomWordList : MonoBehaviour
         ShowTextCustomList();
 
         GameObject.Find("Typer").GetComponent<CustomTyper>().enabled = false;
+        GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = false;
         TyperPanel.SetActive(false);
     }
 
@@ -76,7 +77,7 @@ public class CustomWordList : MonoBehaviour
 
     public void IsStartGame()
     {
-        GameObject.Find("Typer").GetComponent<CustomTyper>().enabled = true;
+        GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = true;
         CustomPanel.SetActive(false);
         TyperPanel.SetActive(true);
 

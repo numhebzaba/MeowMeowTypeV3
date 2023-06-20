@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEditor.Animations;
 
 public class CatCustomTyper : MonoBehaviour
 {
@@ -49,7 +50,12 @@ public class CatCustomTyper : MonoBehaviour
     //public GameObject Keyboard;
     public bool IsKeyboardActive;
 
+    public CharacterDataBase CharacterDB;
+    public GameObject AtworkSkin;
+    private int selectedOption = 0;
 
+    public GameObject playerPositionSpawn;
+    private GameObject animControllerObject;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -59,14 +65,49 @@ public class CatCustomTyper : MonoBehaviour
     }
     void Start()
     {
-        // BGanimator = GetComponent<Animator>();
         BGanimator.speed = 0;
         SummaryUI.SetActive(false);
         SetCurrentWord();
         AddEngLetterlist();
         IsKeyboardActive = true;
+
+        LoadSkinWithSkinSelect();
+        SetReferenceAnimatorSkin();
     }
 
+    private void SetReferenceAnimatorSkin()
+    {
+        animControllerObject = GameObject.FindWithTag("PlayerSkin");
+        animationStateController = animControllerObject.GetComponent<AnimatorControllerState>();
+        animator = animControllerObject.GetComponent<Animator>();
+    }
+
+    private void LoadSkinWithSkinSelect()
+    {
+        if (!PlayerPrefs.HasKey("selectedOption"))
+        {
+            selectedOption = 0;
+        }
+        else
+        {
+            Load();
+        }
+
+        SpawnCharacter(selectedOption);
+    }
+
+    private void Load()
+    {
+        selectedOption = PlayerPrefs.GetInt("selectedOption");
+    }
+
+    public void SpawnCharacter(int CharacterIndex)
+    {
+        Character character = CharacterDB.GetCharacter(CharacterIndex);
+        AtworkSkin = character.CharacterPrefab;
+        Instantiate(AtworkSkin,playerPositionSpawn.transform.position, Quaternion.identity);
+        Debug.Log(AtworkSkin.name);
+    }
 
     private void SetCurrentWord()
     {
@@ -166,7 +207,7 @@ public class CatCustomTyper : MonoBehaviour
             RemoveLetter();
             BGanimator.speed = 1; //play background animation//
             //animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
-            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 24);
+            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
 
             if (IsWordComplete())
             {
@@ -218,7 +259,7 @@ public class CatCustomTyper : MonoBehaviour
         string newString = remainWord.Remove(0, 1);
         wordOutputIsTrue.text += remainWord[0];
 
-        if (wordOutputIsTrue.text.Length > 25)
+        if (wordOutputIsTrue.text.Length > 18)
         {
             DeleteWordIstrue();
         }

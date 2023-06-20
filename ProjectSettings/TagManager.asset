@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CharacterSelectionCAM
+  - PlayerSkin
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         selectedOption = PlayerPrefs.GetInt("selectedOption");
     }
 
-    private void UpdateCharacter(int CharacterIndex)
+    public void UpdateCharacter(int CharacterIndex)
     {
         Character character = CharacterDB.GetCharacter(CharacterIndex);
         AtworkSkin = character.CharacterPrefab;
