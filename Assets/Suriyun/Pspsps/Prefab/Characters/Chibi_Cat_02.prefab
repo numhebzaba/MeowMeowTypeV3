@@ -2875,9 +2875,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8898908557151702423}
   - component: {fileID: 3287463882105018349}
+  - component: {fileID: -6775278810113609418}
   m_Layer: 0
   m_Name: Chibi_Cat_02
-  m_TagString: Untagged
+  m_TagString: PlayerSkin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2909,7 +2910,7 @@ Animator:
   m_GameObject: {fileID: 8085252723492411181}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: aed13fe5e6f76da4aa6149cd601c67cd, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 077308a7ba4e2f84f9c6e7347396a165, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2919,6 +2920,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6775278810113609418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8085252723492411181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa02773fd9b7ab4793679e221ca6ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2886068241463164568, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
+  AnimationHash: 0
+  isSittingHash: 0
+  isRunningHash: 0
 --- !u!1 &8105881813843177444
 GameObject:
   m_ObjectHideFlags: 0

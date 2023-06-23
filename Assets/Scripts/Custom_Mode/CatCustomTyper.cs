@@ -46,7 +46,6 @@ public class CatCustomTyper : MonoBehaviour
     LoopBg loopBg_1, loopBg_2, loopBg_3, loopBg_4;
     public GameObject loopBgArray_1, loopBgArray_2, loopBgArray_3, loopBgArray_4;
 
-    public Animator animator;
     //public GameObject Keyboard;
     public bool IsKeyboardActive;
 
@@ -79,7 +78,6 @@ public class CatCustomTyper : MonoBehaviour
     {
         animControllerObject = GameObject.FindWithTag("PlayerSkin");
         animationStateController = animControllerObject.GetComponent<AnimatorControllerState>();
-        animator = animControllerObject.GetComponent<Animator>();
     }
 
     private void LoadSkinWithSkinSelect()
@@ -279,53 +277,6 @@ public class CatCustomTyper : MonoBehaviour
     private bool IsWordComplete()
     {
         return remainWord.Length == 0;
-    }
-
-    private void SetAnimationKeyboard(string newWord)
-    {
-        switch (newWord)
-        {
-            case "ffff":
-                SetParametorHandAnimator();
-                animator.SetBool("F", true);
-                break;
-            case "jjjj":
-                SetParametorHandAnimator();
-                animator.SetBool("J", true);
-                break;
-            case "dddd":
-                SetParametorHandAnimator();
-                animator.SetBool("D", true);
-                break;
-            case "kkkk":
-                SetParametorHandAnimator();
-                animator.SetBool("K", true);
-                break;
-            case "ssss":
-                SetParametorHandAnimator();
-                animator.SetBool("S", true);
-                break;
-            case "llll":
-                SetParametorHandAnimator();
-                animator.SetBool("L", true);
-                break;
-            case "aaaa":
-                SetParametorHandAnimator();
-                animator.SetBool("A", true);
-                break;
-            case ";;;;":
-                SetParametorHandAnimator();
-                animator.SetBool("Colon", true);
-                break;
-        }
-    }
-
-    private void SetParametorHandAnimator()
-    {
-        for (int i = 0; i < animator.parameterCount; i++)
-        {
-            animator.SetBool(animator.parameters[i].name, false);
-        }
     }
 
     public void SetActiveKeyboard()

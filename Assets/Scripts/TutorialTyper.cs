@@ -36,7 +36,10 @@ public class TutorialTyper : MonoBehaviour
     private string nextWord = string.Empty;
     public List<ListLetters> DataLetterList = new List<ListLetters>();
 
-    public animationStateControllerByType animationStateController;
+    //public animationStateControllerByType animationStateController;
+    public AnimatorControllerState animationStateController;
+    private GameObject animControllerObject;
+
     public Animator BGanimator;
 
 
@@ -46,6 +49,12 @@ public class TutorialTyper : MonoBehaviour
     public Animator animator;
     public GameObject Keyboard;
     public bool IsKeyboardActive;
+
+    private int selectedOption = 0;
+    public CharacterDataBase CharacterDB;
+    public GameObject AtworkSkin;
+
+    public GameObject PlayerPosition;
 
 
     private void Awake()
@@ -63,8 +72,43 @@ public class TutorialTyper : MonoBehaviour
         SetCurrentWord();
         AddEngLetterlist();
         IsKeyboardActive = true;
+        LoadSkinWithSkinSelect();
+        SetReferenceAnimatorSkin();
+
     }
 
+    private void SetReferenceAnimatorSkin()
+    {
+        animControllerObject = GameObject.FindWithTag("PlayerSkin");
+        animationStateController = animControllerObject.GetComponent<AnimatorControllerState>();
+    }
+
+    private void LoadSkinWithSkinSelect()
+    {
+        if (!PlayerPrefs.HasKey("selectedOption"))
+        {
+            selectedOption = 0;
+        }
+        else
+        {
+            Load();
+        }
+
+        SpawnCharacter(selectedOption);
+    }
+
+    private void Load()
+    {
+        selectedOption = PlayerPrefs.GetInt("selectedOption");
+    }
+
+    public void SpawnCharacter(int CharacterIndex)
+    {
+        Character character = CharacterDB.GetCharacter(CharacterIndex);
+        AtworkSkin = character.CharacterPrefab;
+        Instantiate(AtworkSkin, PlayerPosition.transform.position, Quaternion.identity);
+        Debug.Log(AtworkSkin.name);
+    }
 
     private void SetCurrentWord()
     {
@@ -163,8 +207,8 @@ public class TutorialTyper : MonoBehaviour
             CheckLetter(typedLetter);
             RemoveLetter();
             BGanimator.speed = 1; //play background animation//
-            animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
-            animationStateController.animator.SetBool(animationStateController.isWalkingHash, true);
+            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
+            //animationStateController.animator.SetBool(animationStateController.isWalkingHash, true);
 
             if (IsWordComplete())
             {
@@ -180,7 +224,8 @@ public class TutorialTyper : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         BGanimator.speed = 0; //Pause background animation//
-        animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+       //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
 
 
         foreach (var letter in DataLetterList)
