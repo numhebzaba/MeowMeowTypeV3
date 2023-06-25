@@ -90,7 +90,7 @@ public class ShowKeyboardManager : MonoBehaviour
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[2];
             }
-            else if (Switches.AverageSpeed >= 4 && Switches.AverageSpeed > 3)
+            else if ( Switches.AverageSpeed > 3)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[3];
             }

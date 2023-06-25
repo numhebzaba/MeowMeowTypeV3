@@ -21,11 +21,17 @@ public class DataManager : MonoBehaviour
     public Typer typer;
 
     [Header("UserData")]
-    public Transform scoreboardContent;
+    public Transform historyContent;
+    public Transform leaderboardContent;
     public GameObject scoreElement;
 
+    
+
+
     public GameObject HistoryUI;
+    public GameObject LeaderboardUI;
     public bool IsHistoryUIActive = false;
+    public bool IsLeaderboardUIActive = false;
 
     public List<ListLetters> DataLetterList = new List<ListLetters>();
 
@@ -107,7 +113,7 @@ public class DataManager : MonoBehaviour
     private IEnumerator UpdateDate(int _Wpm, string _Time)
     {
 
-        string Date_StringValue = typer.aDate.ToString("dd:MM:yyyy hh:mm tt");
+        string Date_StringValue = typer.aDate.ToString("MM:dd:yyyy hh:mm tt");
         //Set the currently logged in user Date
         Debug.Log(Date_StringValue);
         
@@ -138,6 +144,7 @@ public class DataManager : MonoBehaviour
             StartCoroutine(UpdateLetterAccuracyTypedData(item.getName, item.GetAccuracy, Date_StringValue));
             StartCoroutine(UpdateLetterSpeedTypedData(item.getName, item.GetSpeed, Date_StringValue));
         }
+        StartCoroutine(LoadTheBestWpm(userData.UserName, _Wpm, Date_StringValue, _Time));
         StartCoroutine(UpdateAverageAccuracyAndSpeed());
 
     }
@@ -296,16 +303,16 @@ public class DataManager : MonoBehaviour
 
                     foreach (DataSnapshot childSnapshot2 in snapshot2.Children.Reverse<DataSnapshot>())
                     {
-                        float acc = float.Parse(childSnapshot2.Child("Accuracy").Value.ToString());
+                        float accuracy = float.Parse(childSnapshot2.Child("Accuracy").Value.ToString());
                         float speed = float.Parse(childSnapshot2.Child("Speed").Value.ToString());
-                        Debug.Log("Date " + Date + " " + childSnapshot2.Key + " acc : " + acc);
+                        Debug.Log("Date " + Date + " " + childSnapshot2.Key + " acc : " + accuracy);
                         Debug.Log("Date " + Date + " " + childSnapshot2.Key + " speed : " + speed);
 
                         foreach (var item in DataLetterList)
                         {
                             if (childSnapshot2.Key == item.getName)
                             {
-                                item.AverageAccuracy += acc;
+                                item.AverageAccuracy += accuracy;
                                 item.AverageSpeed += speed;
                                 item.UpdateData();
                             }
@@ -356,24 +363,139 @@ public class DataManager : MonoBehaviour
             //Wpms are now updated
         }
     }
+   
+    private IEnumerator LoadTheBestWpm(string _username, int _Wpm, string _Date, string _Time)
+    {
+
+        //Get all the users data ordered by Wpms amount
+        var DBTask = DBreference.Child("leaderboard").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            Debug.Log("fail load Best Word Per Minute");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            //Destroy any existing scoreboard elements
+            //foreach (Transform child in historyContent.transform)
+            //{
+            //    Destroy(child.gameObject);
+            //}
+
+            //Loop through every users UID
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+                string username = childSnapshot.Child("Username").Value.ToString();
+                int ThebestWpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
+                
+                if(_Wpm > ThebestWpm)
+                {
+                    UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
+                    Debug.Log("1st Best Word Per Minute");
+                }
+                else if(_Wpm > ThebestWpm)
+                {
+                    Debug.Log("Best Word Per Minute does not change");
+                }
+                else
+                {
+                    UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
+                    Debug.Log("New Best Word Per Minute");
+                }
+            }
+
+        }
+    }
+    private void UpdateTheBestWpm(string _username, int _Wpm, string _Date, string _Time)
+    {
+        StartCoroutine(UpdateTheBestWpm_Date(_Date));
+        StartCoroutine(UpdateTheBestWpm_Wpm(_Wpm));
+        StartCoroutine(UpdateTheBestWpm_username(_username));
+        StartCoroutine(UpdateTheBestWpm_Time(_Time));
+
+    }
+    private IEnumerator UpdateTheBestWpm_Date(string _Date)
+    {
+        var DBTask = DBreference.Child("leaderboard").Child(User.UserId).Child("Date").SetValueAsync(_Date);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Wpms are now updated
+        }
+    }
+    private IEnumerator UpdateTheBestWpm_Wpm( int _Wpm)
+    {
+        var DBTask = DBreference.Child("leaderboard").Child(User.UserId).Child("Wpm").SetValueAsync(_Wpm);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Wpms are now updated
+        }
+    }
+    private IEnumerator UpdateTheBestWpm_username(string _username)
+    {
+
+        var DBTask = DBreference.Child("leaderboard").Child(User.UserId).Child("Username").SetValueAsync(_username);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Wpms are now updated
+        }
+    }
+    private IEnumerator UpdateTheBestWpm_Time(string _Time)
+    {
+
+        var DBTask = DBreference.Child("leaderboard").Child(User.UserId).Child("Time").SetValueAsync(_Time);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Wpms are now updated
+        }
+    }
     public void HistoryButton()
     {
         IsHistoryUIActive = !IsHistoryUIActive;
         if (IsHistoryUIActive)
         {
-            StartCoroutine(LoadScoreboardData());
+            StartCoroutine(LoadHistoryData());
             HistoryUI.SetActive(true);
 
         }else
             HistoryUI.SetActive(false);
 
     }
-    private IEnumerator LoadScoreboardData()
+    private IEnumerator LoadHistoryData()
     {
         //Get all the users data ordered by Wpms amount
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").GetValueAsync();
-
-
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -387,7 +509,7 @@ public class DataManager : MonoBehaviour
             DataSnapshot snapshot = DBTask.Result;
 
             //Destroy any existing scoreboard elements
-            foreach (Transform child in scoreboardContent.transform)
+            foreach (Transform child in historyContent.transform)
             {
                 Destroy(child.gameObject);
             }
@@ -401,13 +523,62 @@ public class DataManager : MonoBehaviour
                 string Date = childSnapshot.Child("Date").Value.ToString();
 
                 //Instantiate new scoreboard elements
-                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+                GameObject scoreboardElement = Instantiate(scoreElement, historyContent);
                 scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
             }
 
         }
     }
+    public void LeaderboardButton()
+    {
+        IsLeaderboardUIActive = !IsLeaderboardUIActive;
+        if (IsLeaderboardUIActive)
+        {
+            StartCoroutine(LoadLeaderboardData());
+            LeaderboardUI.SetActive(true);
 
+        }
+        else
+            LeaderboardUI.SetActive(false);
+
+    }
+    private IEnumerator LoadLeaderboardData()
+    {
+        //Get all the users data ordered by Wpms amount
+        //var DBTask = DBreference.Child("users").Child(User.UserId).Child("TheBestWpm").GetValueAsync();
+        var DBTask = DBreference.Child("leaderboard").OrderByChild("Wpm").GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            //Destroy any existing scoreboard elements
+            foreach (Transform child in leaderboardContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            //Loop through every users UID
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+                string username = childSnapshot.Child("Username").Value.ToString();
+                int Wpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
+                string Time = childSnapshot.Child("Time").Value.ToString();
+                string Date = childSnapshot.Child("Date").Value.ToString();
+                Debug.Log(username+" : "+Wpm);
+                //Instantiate new scoreboard elements
+                GameObject scoreboardElement = Instantiate(scoreElement, leaderboardContent);
+                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+            }
+
+        }
+    }
 
     public void LoadAccAndSpeedButton()
     {
@@ -431,7 +602,7 @@ public class DataManager : MonoBehaviour
             DataSnapshot snapshot = DBTask.Result;
 
             //Destroy any existing scoreboard elements
-            foreach (Transform child in scoreboardContent.transform)
+            foreach (Transform child in leaderboardContent.transform)
             {
                 Destroy(child.gameObject);
             }
