@@ -14,7 +14,7 @@ public class SwitchScene : MonoBehaviour
     }
     public void Tutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("TutorialPart1");
     }
     public void MainMenu()
     {

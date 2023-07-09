@@ -25,7 +25,6 @@ public class DataManager : MonoBehaviour
     public Transform leaderboardContent;
     public GameObject scoreElement;
 
-    
 
 
     public GameObject HistoryUI;
