@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 929.60004
     height: 481.6
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 13}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 51
+  controlID: 43
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 105
+  controlID: 117
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 50
+  controlID: 42
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -815,23 +815,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2aac0000
+      m_SelectedIDs: 66d50100
       m_LastClickedID: 0
-      m_ExpandedIDs: c0d8feff360cffff4e0cffff5e0cffff6c0cffff7c0cffffb21affffc421ffff182cffffdc69ffff2c70ffff0cd3ffff18d3ffff28d3ffff38d3ffff48d3ffffdcd5ffffded5ffff4ed7ffff78d8ffff3af6ffff1afbffff8a6e0000986e00008aba00009cba0000acbb0000b6bc0000
+      m_ExpandedIDs: 3a9bfdffa8b9fdff1edcfdffe6dcfdffdef0fdff78fdfdff0e0bfeff4618feff8c1cfeff8a29feffe635feff0240feff244dfefff85afeff1c65feff2475feffbe99fefff4a6feff2ab4feff14befeff4acbfeff34d5feff6ae2feffa0effeffd6fcfeff260cffff5c19ffff4623ffffd234ffff8846ffff5e57ffff4070ffff767dffff6087ffff9694ffffcca1ffff02afffff38bcffff22c1ffffdcd6ffffdad8ffffb0d9ffffbee2ffff24efffff1cf9ffff1afbffffe40801004c4701002c5b0100d884010092d40100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Level_4
-        m_OriginalName: Level_4
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -58710
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -882,22 +882,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\LEGION\Documents\MeowMeowTypeV3
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 223}
-    m_SelectedIDs: 2c780000
-    m_LastClickedID: 30764
-    m_ExpandedIDs: 000000002a7800002e7800007a7800007ecd000000ca9a3b
+    scrollPos: {x: 0, y: 291.80002}
+    m_SelectedIDs: 20740000
+    m_LastClickedID: 29728
+    m_ExpandedIDs: 00000000e8730000ea730000ec730000ee7300001e7400002074000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -925,7 +925,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002a7800002c7800002e780000
+    m_ExpandedIDs: 00000000e8730000ea730000ec730000ee730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

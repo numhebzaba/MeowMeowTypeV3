@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using System;
 
@@ -37,7 +36,10 @@ public class Typer : MonoBehaviour
     private string nextWord = string.Empty;
     public List<ListLetters> DataLetterList = new List<ListLetters>();
 
-    public animationStateControllerByType animationStateController;
+    //public animationStateControllerByType animationStateController;
+    public AnimatorControllerState animationStateController;
+    private GameObject animControllerObject;
+
     public Animator BGanimator;
 
 
@@ -47,6 +49,16 @@ public class Typer : MonoBehaviour
     public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
 
     public DateTime aDate = DateTime.Now;
+
+    public Animator animator;
+    public GameObject Keyboard;
+    public bool IsKeyboardActive;
+
+    private int selectedOption = 0;
+    public CharacterDataBase CharacterDB;
+    public GameObject AtworkSkin;
+
+    public GameObject PlayerPosition;
 
     private void Awake()
     {
@@ -62,10 +74,44 @@ public class Typer : MonoBehaviour
         SummaryUI.SetActive(false);
         SetCurrentWord();
         AddEngLetterlist();
-        
+        LoadSkinWithSkinSelect();
+
+        SetReferenceAnimatorSkin();
+
     }
 
+    private void SetReferenceAnimatorSkin()
+    {
+        animControllerObject = GameObject.FindWithTag("PlayerSkin");
+        animationStateController = animControllerObject.GetComponent<AnimatorControllerState>();
+    }
 
+    private void LoadSkinWithSkinSelect()
+    {
+        if (!PlayerPrefs.HasKey("selectedOption"))
+        {
+            selectedOption = 0;
+        }
+        else
+        {
+            Load();
+        }
+
+        SpawnCharacter(selectedOption);
+    }
+
+    private void Load()
+    {
+        selectedOption = PlayerPrefs.GetInt("selectedOption");
+    }
+
+    public void SpawnCharacter(int CharacterIndex)
+    {
+        Character character = CharacterDB.GetCharacter(CharacterIndex);
+        AtworkSkin = character.CharacterPrefab;
+        Instantiate(AtworkSkin, PlayerPosition.transform.position, Quaternion.identity);
+        Debug.Log(AtworkSkin.name);
+    }
     private void SetCurrentWord()
     {
         currentWord = wordList.getWord();
@@ -169,8 +215,7 @@ public class Typer : MonoBehaviour
             CheckLetter(typedLetter);
             RemoveLetter();
             BGanimator.speed = 1; //play background animation//
-            animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
-            animationStateController.animator.SetBool(animationStateController.isWalkingHash, true);
+            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
 
             
 
@@ -188,7 +233,8 @@ public class Typer : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         BGanimator.speed = 0; //Pause background animation//
-        animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
 
 
         foreach (var letter in DataLetterList)

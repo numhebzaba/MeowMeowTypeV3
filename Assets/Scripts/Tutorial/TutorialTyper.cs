@@ -146,7 +146,7 @@ public class TutorialTyper : MonoBehaviour
         else
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime);
 
-        TimeSpent.text = delayTimeSpan.ToString();
+        TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word :" + wordTotal.ToString();
 
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
@@ -339,5 +339,6 @@ public class TutorialTyper : MonoBehaviour
         DataLetterList.Add(new ListLetters("x", 0, 0, 0));
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
+        DataLetterList.Add(new ListLetters(";", 0, 0, 0));
     }
 }

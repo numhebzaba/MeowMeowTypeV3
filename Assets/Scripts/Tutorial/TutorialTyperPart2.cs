@@ -146,7 +146,7 @@ public class TutorialTyperPart2 : MonoBehaviour
         else
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime);
 
-        TimeSpent.text = delayTimeSpan.ToString();
+        TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word :" + wordTotal.ToString();
 
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());

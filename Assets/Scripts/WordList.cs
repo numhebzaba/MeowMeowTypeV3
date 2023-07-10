@@ -24,8 +24,9 @@ public class WordList : MonoBehaviour
     {
         workingWords.AddRange(wordList);
         shuffle(workingWords);
+        get100word(workingWords);
         //ConvertToLower(workingWords);
-        
+
     }
     private void shuffle(List<string> list)
     {
@@ -38,7 +39,12 @@ public class WordList : MonoBehaviour
             list[random] = temporary;
         }
     }
-   
+    private void get100word(List<string> list)
+    {
+        if(list.Count >100)
+            list.RemoveRange(100, list.Count - 100);
+    }
+
     private void ConvertToLower(List<string> list)
     {
         for(int i = 0; i< list.Count;i++)

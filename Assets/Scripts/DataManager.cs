@@ -581,7 +581,7 @@ public class DataManager : MonoBehaviour
 
     public void LoadAccAndSpeedButton()
     {
-        //StartCoroutine(UpdateAverageAccuracyAndSpeed());
+        StartCoroutine(UpdateAverageAccuracyAndSpeed());
         StartCoroutine(LoadTrackingProgressData());
     }
     private IEnumerator LoadTrackingProgressData()
