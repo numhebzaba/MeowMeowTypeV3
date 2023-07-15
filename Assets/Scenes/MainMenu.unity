@@ -2505,14 +2505,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 273706886}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level5_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2535,7 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3261,14 +3261,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 357048741}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level2_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3291,7 +3291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5189,6 +5189,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsShowKeyboard: 0
   _UIGameManager: {fileID: 369824548}
+  _DataManager: {fileID: 539248050}
+  ChallengeButton:
+  - {fileID: 1192948374}
+  - {fileID: 357048740}
+  - {fileID: 2011078869}
+  - {fileID: 571157305}
+  - {fileID: 273706885}
+  - {fileID: 586844268}
+  - {fileID: 1678240251}
+  - {fileID: 1114284765}
+  - {fileID: 1075737363}
+  - {fileID: 1986682324}
 --- !u!224 &519277162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5293,6 +5305,7 @@ MonoBehaviour:
   IsHistoryUIActive: 0
   IsLeaderboardUIActive: 0
   showKeyboardManager: {fileID: 402703821}
+  UIChallenge: {fileID: 519277161}
 --- !u!4 &539248051
 Transform:
   m_ObjectHideFlags: 0
@@ -5619,14 +5632,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 571157306}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level4_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5649,7 +5662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5753,14 +5766,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 586844269}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level6_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5783,7 +5796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9500,14 +9513,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1075737364}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level9_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9530,7 +9543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10012,14 +10025,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1114284766}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level8_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10042,7 +10055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10660,7 +10673,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level1_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14647,7 +14660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 5
+  m_text: Level 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -15000,14 +15013,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1678240252}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level7_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15030,7 +15043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17879,14 +17892,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1986682325}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level10_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17909,7 +17922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18226,14 +18239,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2011078870}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519277161}
         m_TargetAssemblyTypeName: UIChallenge, Assembly-CSharp
-        m_MethodName: ShowUIChallenge
+        m_MethodName: Level3_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18256,7 +18269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

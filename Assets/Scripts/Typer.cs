@@ -28,6 +28,7 @@ public class Typer : MonoBehaviour
     public int allTypedEntries = 0;
     public int unCorrectedError = 0;
     public int wordPerMinute = 0;
+    public float OverallAccuracy = 0;
     public TimeSpan delayTimeSpan = new TimeSpan(0, 0, 0);
     public int TimeInMinute;
 
@@ -194,11 +195,12 @@ public class Typer : MonoBehaviour
             {
                 letter.UpdateData();
                 letter.UpdateAccuracy();
+                UpdateOverallAccuracy();
 
                 float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
                 letter.UpdateSpeed(SpeedTypedOneLetter);
-                Debug.Log(SpeedTypedOneLetter);
                 SpeedType = TimeSpan.Zero;
+
             }
         }
     }
@@ -266,8 +268,16 @@ public class Typer : MonoBehaviour
     {
         return remainWord.Length == 0;
     }
+    public void UpdateOverallAccuracy()
+    {
 
-    
+        float OverallAccuracyTemp = (allTypedEntries - unCorrectedError) ;
+        OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
+        Debug.Log("++++++++++++"+OverallAccuracyTemp);
+        OverallAccuracy = OverallAccuracyTemp;
+
+    }
+
 
     private void AddEngLetterlist()
     {

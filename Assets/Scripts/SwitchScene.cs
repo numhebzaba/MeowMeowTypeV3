@@ -20,4 +20,8 @@ public class SwitchScene : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void Challenge()
+    {
+        SceneManager.LoadScene("ChallengeMode");
+    }
 }

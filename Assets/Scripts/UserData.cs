@@ -29,7 +29,6 @@ public class UserData : MonoBehaviour
     private void Start()
     {
         UserName_text.text = $"PlayerName : {UserName.ToString()}";
-
     }
 
 }

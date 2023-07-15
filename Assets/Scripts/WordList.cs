@@ -11,7 +11,7 @@ public class WordList : MonoBehaviour
         //,"Trot","Charge","Young","Synonymous","Eminent","Stereotyped","Lunch","Daily","Wilderness"
         //,"Yard","Dance","Deep","Allow","Lace","Colossal","Boiling","Porter","Like","Fire","Tough"
         //,"Dull","Kick","Stitch","Press","Houses","Look","Overt","Little","Step","Invite"
-        //,"Courageous","Murky","Invent","Clover","Arrive","Colossal","Whistle","Guard","Troubled","Easy"
+        //,"Courageous","Murky","Invent","Clover","Arrive","Whistle","Guard","Troubled","Easy"
         //,"Momentous","Sneeze","Serious","Abashed","Heavy","General","Cent","Slip","Opposite"
         //,"Loose","Harbor","Rhetorical","Gabby","Stomach","Mountainous","Cool","Elderly","Treatment","Plant","Pickle"
         //,"Broad","Cushion","Grape","Hum","Turkey","Level","Learned","Knowledgeable","Frame"

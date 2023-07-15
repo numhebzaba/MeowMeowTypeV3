@@ -36,8 +36,15 @@ public class ChallengeModeDataManger : MonoBehaviour
 
     public ShowKeyboardManager showKeyboardManager;
 
+    public int level;
+
+    public TMP_Text challenge_level;
+    public bool IfChecker = false;
+
+
     void Awake()
     {
+        level = PlayerPrefs.GetInt("challenge_level");
         //Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
@@ -64,6 +71,9 @@ public class ChallengeModeDataManger : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
+        challenge_level.text = $"Level : {level}";
+        Debug.Log(level);
+
 
     }
     private IEnumerator Login(string _email, string _password)
@@ -105,7 +115,139 @@ public class ChallengeModeDataManger : MonoBehaviour
     }
     public void UploadDataButton()
     {
-        StartCoroutine(UpdateChallengeLevel(1));
+        switch (level)
+        {
+            case 1:
+                {
+                    if(typer.wordPerMinute >=25 && typer.OverallAccuracy >= 50)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 2:
+                {
+                    if (typer.wordPerMinute >= 30 && typer.OverallAccuracy >= 60)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 3:
+                {
+                    if (typer.wordPerMinute >= 35 && typer.OverallAccuracy >= 70)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 4:
+                {
+                    if (typer.wordPerMinute >= 40 && typer.OverallAccuracy >= 80)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 5:
+                {
+                    if (typer.wordPerMinute >= 45 && typer.OverallAccuracy >= 90)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 6:
+                {
+                    if (typer.wordPerMinute >= 50 && typer.OverallAccuracy >= 92)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 7:
+                {
+                    if (typer.wordPerMinute >= 60 && typer.OverallAccuracy >= 94)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 8:
+                {
+                    if (typer.wordPerMinute >= 70 && typer.OverallAccuracy >= 96)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 9:
+                {
+                    if (typer.wordPerMinute >= 80 && typer.OverallAccuracy >= 98)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+            case 10:
+                {
+                    if (typer.wordPerMinute >= 100 && typer.OverallAccuracy >= 99)
+                    {
+                        StartCoroutine(UpdateChallengeLevel(level));
+                        challenge_level.text = "complete";
+
+                    }
+                    else
+                        challenge_level.text = "fail";
+
+                    break;
+                }
+
+        }
 
     }
     private IEnumerator UpdateChallengeLevel(int level)

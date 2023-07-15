@@ -36,6 +36,8 @@ public class DataManager : MonoBehaviour
 
     public ShowKeyboardManager showKeyboardManager;
 
+    public UIChallenge UIChallenge;
+
     void Awake()
     {
         //Check that all of the necessary dependencies for Firebase are present on the system
@@ -68,7 +70,7 @@ public class DataManager : MonoBehaviour
     }
     public void UploadDataButton()
     {
-        StartCoroutine(UpdateDate(typer.wordPerMinute, typer.delayTimeSpan.ToString(@"hh\:mm\:ss")));
+        StartCoroutine(UpdateDate(typer.wordPerMinute, typer.delayTimeSpan.ToString(@"hh\:mm\:ss"),typer.OverallAccuracy));
 
     }
     private IEnumerator Login(string _email, string _password)
@@ -109,7 +111,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateDate(int _Wpm, string _Time)
+    private IEnumerator UpdateDate(int _Wpm, string _Time, float _OverallAccuracy)
     {
 
         string Date_StringValue = typer.aDate.ToString("MM:dd:yyyy hh:mm tt");
@@ -134,7 +136,9 @@ public class DataManager : MonoBehaviour
         StartCoroutine(UpdateUsernameDatabase(userData.UserName, Date_StringValue));
 
         StartCoroutine(UpdateWpm(_Wpm, Date_StringValue));
+        StartCoroutine(UpdateOverallAccuracy(_OverallAccuracy, Date_StringValue));
         StartCoroutine(UpdateTime(_Time, Date_StringValue));
+
 
         foreach (var item in typer.DataLetterList)
         {
@@ -167,6 +171,22 @@ public class DataManager : MonoBehaviour
     {
         //Set the currently logged in user Wpm
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Wpm").SetValueAsync(_Wpm);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Wpms are now updated
+        }
+    }
+    private IEnumerator UpdateOverallAccuracy(float _OverallAccuracy, string _Date)
+    {
+        //Set the currently logged in user Wpm
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Wpm").SetValueAsync(_OverallAccuracy);
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -630,6 +650,40 @@ public class DataManager : MonoBehaviour
             showKeyboardManager.ShowKeyboard();
         }
         
+    }
+    public void LoadChallengeDataButton()
+    {
+        StartCoroutine(LoadChallengeData());
+    }
+    public IEnumerator LoadChallengeData()
+    {
+        //Get all the users data ordered by Wpms amount
+        //var DBTask = DBreference.Child("users").Child(User.UserId).Child("TheBestWpm").GetValueAsync();
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("Challenge").GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            //Destroy any existing scoreboard elements
+            foreach (Transform child in leaderboardContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            int CompleteLevel = 0;
+            //Loop through every users UID
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+                CompleteLevel++;
+            }
+            UIChallenge.SetChallengeButton(CompleteLevel);
+        }
     }
     private void AddEngLetterlist()
     {
