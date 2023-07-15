@@ -107,7 +107,7 @@ public class CatCustomTyper : MonoBehaviour
         Debug.Log(AtworkSkin.name);
     }
 
-    private void SetCurrentWord()
+    public void SetCurrentWord()
     {
         currentWord = TutorialwordList.getWord();
         SetRemainWord(currentWord);

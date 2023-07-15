@@ -31,6 +31,8 @@ public class CustomWordList : MonoBehaviour
         //,"Absorbing","Different","Toad","Post","Horse","Understood","Complete","Phobic","Distinct","Worm","Functional"
     };
 
+    public CatCustomTyper CustomTyper;
+
     void Start()
     {
         ShowTextCustomList();
@@ -38,6 +40,7 @@ public class CustomWordList : MonoBehaviour
         GameObject.Find("Typer").GetComponent<CustomTyper>().enabled = false;
         GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = false;
         TyperPanel.SetActive(false);
+        PrintWord();
     }
 
     void Update()
@@ -56,6 +59,8 @@ public class CustomWordList : MonoBehaviour
             CurrentListText += TutorialwordList[i]+" ";
         }
         TextListOutput.text = CurrentListText;
+        CustomTyper.SetCurrentWord();
+        ShowTextCustomList();
 
     }
 
@@ -71,6 +76,7 @@ public class CustomWordList : MonoBehaviour
 
             }
         }
+        CustomTyper.SetCurrentWord();
         ShowTextCustomList();
 
     }
@@ -80,9 +86,18 @@ public class CustomWordList : MonoBehaviour
         GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = true;
         CustomPanel.SetActive(false);
         TyperPanel.SetActive(true);
+        PrintWord();
 
     }
 
+
+    private void PrintWord()
+    {
+        for(int i = 0; i< TutorialwordList.Count; i++)
+        {
+            Debug.Log(TutorialwordList[i]);
+        }
+    }
     public void ShowTextCustomList()
     {
         CurrentListText = null;

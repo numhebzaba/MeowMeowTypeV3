@@ -1663,7 +1663,6 @@ MonoBehaviour:
   loopBgArray_2: {fileID: 564868096}
   loopBgArray_3: {fileID: 1421901020}
   loopBgArray_4: {fileID: 219039929}
-  animator: {fileID: 0}
   IsKeyboardActive: 0
   CharacterDB: {fileID: 11400000, guid: 9f57d4b9807d73d498c7aebcf2c32fcb, type: 2}
   AtworkSkin: {fileID: 0}
@@ -2376,6 +2375,7 @@ MonoBehaviour:
   TextListOutput: {fileID: 649889896}
   CustomPanel: {fileID: 643934303}
   TyperPanel: {fileID: 765317911}
+  CustomTyper: {fileID: 287652765}
 --- !u!4 &462525885
 Transform:
   m_ObjectHideFlags: 0
