@@ -9,17 +9,27 @@ public class SelectionCharacterManager : MonoBehaviour
 
     public GameObject AtworkSkin;
 
-    private int selectedOption = 0;
+    private int selectedOption;
+    private int IndexCharacterSelected;
+
+    public GameObject SelectButton;
+    public GameObject IsSelectedButton;
 
     [SerializeField] GameObject[] Camera;
     void Start()
     {
+        Load();
         UpdateCharacter(selectedOption);
-        SetCamera();
+        UpdateCamera(selectedOption);
+        IndexCharacterSelected = selectedOption;
+        IScharacterSelected(IndexCharacterSelected);
+
+
     }
 
     public void NetxtOption()
-    {  
+    {
+        IndexCharacterSelected++;
         selectedOption++;
         Debug.Log(selectedOption);
         if (selectedOption >= CharacterDB.CharacterCount)
@@ -28,11 +38,13 @@ public class SelectionCharacterManager : MonoBehaviour
         }
         UpdateCharacter(selectedOption);
         UpdateCamera(selectedOption);
-        Save();
+
+        IScharacterSelected(IndexCharacterSelected);
     }
 
     public void BackOption()
     {
+        IndexCharacterSelected--;
         selectedOption--;
         if (selectedOption < 0  )
         {
@@ -40,7 +52,7 @@ public class SelectionCharacterManager : MonoBehaviour
         }
         UpdateCharacter(selectedOption);
         UpdateCamera(selectedOption);
-        Save();
+        IScharacterSelected(IndexCharacterSelected);
 
     }
 
@@ -74,13 +86,27 @@ public class SelectionCharacterManager : MonoBehaviour
         selectedOption = PlayerPrefs.GetInt("selectedOption");
     }
 
-    private void Save()
+    public void Save()
     {
         PlayerPrefs.SetInt("selectedOption", selectedOption);
+        IScharacterSelected(IndexCharacterSelected);
+
     }
 
     public void ChangeScene(int ScenceID)
     {
         SceneManager.LoadScene(ScenceID);
+    }
+
+    private void IScharacterSelected(int IndexCharacterSelected)
+    {
+        if (PlayerPrefs.GetInt("selectedOption") == IndexCharacterSelected)
+        {
+            SelectButton.SetActive(false);
+            IsSelectedButton.SetActive(true);
+            return;
+        }
+        SelectButton.SetActive(true);
+        IsSelectedButton.SetActive(false);
     }
 }
