@@ -4,7 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class Achievement 
 {
-    public string id;
-    public string title;
-    public string description;
+    public string Id;
+    public string Title;
+    public string Description;
+
+    public Achievement(string Id,string Title, string Description)
+    {
+        this.Id = Id;
+        this.Title = Title;
+        this.Description = Description;
+    }
 }

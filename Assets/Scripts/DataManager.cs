@@ -38,6 +38,9 @@ public class DataManager : MonoBehaviour
 
     public UIChallenge UIChallenge;
 
+    public List<Achievement> AchievementList = new List<Achievement>();
+    public AchievementNotificationcontroller _achievementNotificationcontroller;
+
     void Awake()
     {
         //Check that all of the necessary dependencies for Firebase are present on the system
@@ -65,6 +68,8 @@ public class DataManager : MonoBehaviour
     }
     private void Start()
     {
+        Debug.Log(userData.UserEmail);
+        Debug.Log(userData.UserPassword);
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
 
     }
@@ -76,7 +81,7 @@ public class DataManager : MonoBehaviour
     private IEnumerator Login(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password
-        var LoginTask = auth.SignInWithEmailAndPasswordAsync(_email, _password);
+        var LoginTask = auth.SignInWithEmailAndPasswordAsync(userData.UserEmail, userData.UserPassword);
         //Wait until the task completes
         yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
 
@@ -714,4 +719,62 @@ public class DataManager : MonoBehaviour
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
     }
+
+    public IEnumerator LoadAchievementData()
+    {
+        //Get all the users data ordered by Wpms amount
+        //var DBTask = DBreference.Child("users").Child(User.UserId).Child("TheBestWpm").GetValueAsync();
+        var DBTask = DBreference.Child("achievement").GetValueAsync();
+     
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            ////Destroy any existing scoreboard elements
+            //foreach (Transform child in leaderboardContent.transform)
+            //{
+            //    Destroy(child.gameObject);
+            //}
+
+            //Loop through every users UID
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+
+                string Id = childSnapshot.Child("Id").Value.ToString();
+                string Description = childSnapshot.Child("Description").Value.ToString();
+                string Title = childSnapshot.Child("Title").Value.ToString();
+                AchievementList.Add(new Achievement(Id,Description,Title));
+                AchievementList.Reverse();
+
+                Debug.Log(Id);
+                Debug.Log(Description);
+                Debug.Log(Title);
+                Debug.Log("----------------------------");
+
+                Debug.Log(AchievementList[0]);
+
+
+                //string Id = childSnapshot.Child("Id").Value.ToString();
+                //string Description = childSnapshot.Child("Description").Value.ToString();
+                //string Title = childSnapshot.Child("Title").Value.ToString();
+                //Instantiate new scoreboard elements
+                //GameObject scoreboardElement = Instantiate(scoreElement, leaderboardContent);
+                //scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+            }
+            _achievementNotificationcontroller.ShowNoticationButton();
+
+        }
+    }
+    public void TEstButton()
+    {
+        StartCoroutine(LoadAchievementData());
+    }
+    
 }
