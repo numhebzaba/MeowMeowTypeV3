@@ -5,15 +5,16 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class CustomWordList : MonoBehaviour
+public class CatSurvival_wordList : MonoBehaviour
 {
     public TMP_InputField WordInput;
     public TMP_Text TextListOutput;
-    public GameObject CustomPanel;
+    public GameObject CoundownPanel;
     public GameObject TyperPanel;
+    public TMP_Text CountDownTime;
     string StringInput;
     string CurrentListText = null;
+
 
     private List<string> workingWords = new List<string>();
     private List<string> TutorialwordList = new List<string>()
@@ -31,15 +32,13 @@ public class CustomWordList : MonoBehaviour
         //,"Absorbing","Different","Toad","Post","Horse","Understood","Complete","Phobic","Distinct","Worm","Functional"
     };
 
-    public CatCustomTyper CustomTyper;
+    public CatSurvival_Typer CustomTyper;
 
     void Start()
     {
-        ShowTextCustomList();
-
-        GameObject.Find("Typer").GetComponent<CustomTyper>().enabled = false;
-        GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = false;
-        TyperPanel.SetActive(false);
+        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = false;
+        CoundownPanel.SetActive(true);
+        StartCoroutine(CountdownAndStart());
     }
 
     void Update()
@@ -48,14 +47,33 @@ public class CustomWordList : MonoBehaviour
         //Debug.Log(workingWords.First());
     }
 
+    private IEnumerator CountdownAndStart()
+    {
+        int countdownTime = 4;
+        while (countdownTime > 0)
+        {
+            if (countdownTime == 4)
+            {
+                CountDownTime.text = "Ready!";
+            }
+            yield return new WaitForSeconds(1.0f);
+            countdownTime--;
+            {
+                CountDownTime.text = countdownTime.ToString();
+            }
+        }
+        CoundownPanel.SetActive(false);
+        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = true;
+    }
+
     public void Addtext()
     {
         StringInput = WordInput.GetComponent<TMP_InputField>().text;
         CurrentListText = null;
         TutorialwordList.Add(StringInput);
-        for (int i = 0; i< TutorialwordList.Count; i++)
+        for (int i = 0; i < TutorialwordList.Count; i++)
         {
-            CurrentListText += TutorialwordList[i]+" ";
+            CurrentListText += TutorialwordList[i] + " ";
         }
         TextListOutput.text = CurrentListText;
         CustomTyper.SetCurrentWord();
@@ -68,7 +86,7 @@ public class CustomWordList : MonoBehaviour
         StringInput = WordInput.GetComponent<TMP_InputField>().text;
         for (int i = 0; i < TutorialwordList.Count; i++)
         {
-            if(TutorialwordList[i] == StringInput)
+            if (TutorialwordList[i] == StringInput)
             {
                 TutorialwordList.RemoveAt(i);
                 TextListOutput.text = CurrentListText;
@@ -82,17 +100,16 @@ public class CustomWordList : MonoBehaviour
 
     public void IsStartGame()
     {
-        GameObject.Find("Typer").GetComponent<CatCustomTyper>().enabled = true;
-        CustomPanel.SetActive(false);
+        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = true;
         TyperPanel.SetActive(true);
-        
+
 
     }
 
 
     private void PrintWord()
     {
-        for(int i = 0; i< TutorialwordList.Count; i++)
+        for (int i = 0; i < TutorialwordList.Count; i++)
         {
             Debug.Log(TutorialwordList[i]);
         }
@@ -105,7 +122,7 @@ public class CustomWordList : MonoBehaviour
             CurrentListText += TutorialwordList[i] + " ";
         }
         TextListOutput.text = CurrentListText;
-        
+
     }
 
 
@@ -144,10 +161,10 @@ public class CustomWordList : MonoBehaviour
         //Debug.Log(newWord);
 
 
-        for(int i = 0; i < TutorialwordList.Count; i++)
+        for (int i = 0; i < TutorialwordList.Count; i++)
         {
             nextWord = TutorialwordList[i];
-            newWord += nextWord+" ";
+            newWord += nextWord + " ";
         }
 
 
@@ -174,7 +191,5 @@ public class CustomWordList : MonoBehaviour
         return true;
     }
 
-
-
-
+    
 }

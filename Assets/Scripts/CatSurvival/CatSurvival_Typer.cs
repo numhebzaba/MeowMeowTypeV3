@@ -5,9 +5,9 @@ using TMPro;
 using System;
 using UnityEditor.Animations;
 
-public class CatCustomTyper : MonoBehaviour
+public class CatSurvival_Typer : MonoBehaviour
 {
-    public CustomWordList TutorialwordList = null;
+    public CatSurvival_wordList CatSurvivalWordlist = null;
     public TMP_Text wordOutput = null;
     public TMP_Text wordOutputIsTrue = null;
     public TMP_Text nextWordOutput = null;
@@ -55,6 +55,9 @@ public class CatCustomTyper : MonoBehaviour
 
     public GameObject playerPositionSpawn;
     private GameObject animControllerObject;
+
+    private int Cat_HP = 3;
+    public TMP_Text CatTextHP;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -72,6 +75,7 @@ public class CatCustomTyper : MonoBehaviour
 
         LoadSkinWithSkinSelect();
         SetReferenceAnimatorSkin();
+        CatTextHP.text = Cat_HP.ToString();
     }
 
     private void SetReferenceAnimatorSkin()
@@ -103,15 +107,15 @@ public class CatCustomTyper : MonoBehaviour
     {
         Character character = CharacterDB.GetCharacter(CharacterIndex);
         AtworkSkin = character.CharacterPrefab;
-        Instantiate(AtworkSkin,playerPositionSpawn.transform.position, Quaternion.identity);
+        Instantiate(AtworkSkin, playerPositionSpawn.transform.position, Quaternion.identity);
         Debug.Log(AtworkSkin.name);
     }
 
     public void SetCurrentWord()
     {
-        currentWord = TutorialwordList.getWord();
+        currentWord = CatSurvivalWordlist.getWord();
         SetRemainWord(currentWord);
-        nextWord = TutorialwordList.getNextWord();
+        nextWord = CatSurvivalWordlist.getNextWord();
         SetNextRemainWord(nextWord);
     }
     private void SetRemainWord(string newString)
@@ -129,7 +133,7 @@ public class CatCustomTyper : MonoBehaviour
         CheckInput();
         //SetAnimationKeyboard(currentWord);
 
-        if (!TutorialwordList.IsWordLeft() && IsWordComplete())
+        if (!CatSurvivalWordlist.IsWordLeft() && IsWordComplete())
         {
             SummaryUI.SetActive(true);
             delayTimeSpan = delayTimeSpan;
@@ -222,6 +226,7 @@ public class CatCustomTyper : MonoBehaviour
     {
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
+        ReducedHP();
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
 
 
@@ -255,13 +260,12 @@ public class CatCustomTyper : MonoBehaviour
         //wordOutput.text = modifiedText;
 
         string newString = remainWord.Remove(0, 1);
-        Debug.Log(remainWord);
-        if(remainWord[0].ToString() == " ")
+        if (remainWord[0].ToString() == " ")
         {
             wordOutputIsTrue.text += "_";
             //"<alpha=#00>F<alpha=#FF>"
         }
-        else if(remainWord[0].ToString() != " ")
+        else if (remainWord[0].ToString() != " ")
         {
             wordOutputIsTrue.text += remainWord[0];
         }
@@ -323,4 +327,11 @@ public class CatCustomTyper : MonoBehaviour
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
     }
+    
+    private void ReducedHP()
+    {
+        Cat_HP--;
+        CatTextHP.text = Cat_HP.ToString();
+    }
+
 }
