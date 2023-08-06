@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1536
-    height: 722.8
+    width: 1920
+    height: 939
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 313.6
-    width: 1228.6
-    height: 461.8
+    y: 459
+    width: 1536
+    height: 532
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1228.6, y: 440.8}
+  m_TargetSize: {x: 1536, y: 511}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -76,10 +76,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -491.44
-    m_HBaseRangeMax: 491.44
-    m_VBaseRangeMin: -176.31999
-    m_VBaseRangeMax: 176.31999
+    m_HBaseRangeMin: -768
+    m_HBaseRangeMax: 768
+    m_VBaseRangeMin: -255.5
+    m_VBaseRangeMax: 255.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -97,23 +97,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1228.6
-      height: 440.8
+      width: 1536
+      height: 511
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 614.3, y: 220.4}
+    m_Translation: {x: 768, y: 255.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -614.3
-      y: -220.4
-      width: 1228.6
-      height: 440.8
+      x: -768
+      y: -255.5
+      width: 1536
+      height: 511
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1535.75, y: 577.25}
+  m_LastWindowPixelSize: {x: 1536, y: 532}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -138,8 +138,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1229.6
-    height: 722.8
+    width: 1537
+    height: 939
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
@@ -163,12 +163,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1229.6
-    height: 240
+    width: 1537
+    height: 386
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 19499
+  controlID: 7714
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,10 +186,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 989.6
-    height: 240
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 1237
+    height: 386
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -225,10 +225,16 @@ MonoBehaviour:
     height: 404.6
 =======
     x: 0
+<<<<<<< HEAD
     y: 73.6
     width: 988.6
     height: 219
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    y: 73
+    width: 1236
+    height: 365
+>>>>>>> origin/Minigame1
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -255,7 +261,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: -141, y: -70.2}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: -0.000015258789}
       snapCorner: 3
       id: unity-grid-and-snap-toolbar
       index: 1
@@ -436,6 +442,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 814.63873, y: 611.26184, z: -3.0113807}
     speed: 2
     m_Value: {x: 814.63873, y: 611.26184, z: -3.0113807}
@@ -444,6 +451,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 768, y: 130, z: 0}
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    m_Target: {x: 674.77026, y: 174.92213, z: -27.438759}
+    speed: 2
+    m_Value: {x: 674.77026, y: 174.92213, z: -27.438759}
+>>>>>>> origin/Minigame1
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -491,6 +503,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
@@ -500,13 +513,20 @@ MonoBehaviour:
     m_Value: 382.4371
 =======
     m_Target: {x: -0.03149503, y: 0.008087091, z: -0.00027810657, w: -0.99950504}
+=======
+    m_Target: {x: -0.05396329, y: -0.021876544, z: 0.0011615675, w: -0.99833554}
+>>>>>>> origin/Minigame1
     speed: 2
-    m_Value: {x: -0.031493515, y: 0.009586015, z: -0.00032533778, w: -0.99945796}
+    m_Value: {x: -0.052464, y: -0.021877542, z: 0.00112871, w: -0.9983825}
   m_Size:
-    m_Target: 408.0022
+    m_Target: 344.4124
     speed: 2
+<<<<<<< HEAD
     m_Value: 408.0022
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    m_Value: 344.4124
+>>>>>>> origin/Minigame1
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -812,6 +832,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 270.4
     y: 0
     width: 935.19995
@@ -821,11 +842,14 @@ MonoBehaviour:
   m_ActualView: {fileID: 2}
 =======
     x: 989.6
+=======
+    x: 1237
+>>>>>>> origin/Minigame1
     y: 0
-    width: 240
-    height: 240
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 300
+    height: 386
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
   m_Panes:
@@ -854,6 +878,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 270.4
     y: 73.6
     width: 933.19995
@@ -864,6 +889,12 @@ MonoBehaviour:
     width: 238
     height: 219
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    x: 1237
+    y: 73
+    width: 298
+    height: 365
+>>>>>>> origin/Minigame1
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -937,9 +968,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 866e0000
-      m_LastClickedID: 28294
-      m_ExpandedIDs: 18fbffff36fbffff106d0000726d0000da6f0000
+      m_SelectedIDs: ececfeff
+      m_LastClickedID: -70420
+      m_ExpandedIDs: 1afbffffd66c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -981,6 +1012,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 425.6
     width: 1205.6
     height: 297.19998
@@ -993,6 +1025,13 @@ MonoBehaviour:
     height: 482.8
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+    y: 386
+    width: 1537
+    height: 553
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> origin/Minigame1
   m_ActualView: {fileID: 2}
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
   m_Panes:
@@ -1022,6 +1061,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 499.2
     width: 1204.6
     height: 276.19998
@@ -1030,6 +1070,11 @@ MonoBehaviour:
     width: 1536
     height: 281
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    y: 459
+    width: 1536
+    height: 532
+>>>>>>> origin/Minigame1
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1048,25 +1093,34 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scenes
 =======
     - Assets/Sprite/Button
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    - Assets/Scripts/CatSurvival
+>>>>>>> origin/Minigame1
     m_Globs: []
     m_OriginalText: test
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - Assets/Scenes
 =======
   - Assets/Sprite/Button
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+  - Assets/Scripts/CatSurvival
+>>>>>>> origin/Minigame1
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\LEGION\Documents\MeowMeowTypeV3
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
 <<<<<<< HEAD
     scrollPos: {x: 0, y: 291.80002}
     m_SelectedIDs: f4730000
@@ -1078,6 +1132,12 @@ MonoBehaviour:
     m_LastClickedID: 35150
     m_ExpandedIDs: 000000008288000000ca9a3b
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: e28e0000
+    m_LastClickedID: 36578
+    m_ExpandedIDs: 000000003a8c000000ca9a3b
+>>>>>>> origin/Minigame1
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1106,10 +1166,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000ec730000ee730000f0730000f2730000f4730000f6730000
 =======
     m_ExpandedIDs: 000000008288000000ca9a3b
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
+=======
+    m_ExpandedIDs: 000000003a8c000000ca9a3b
+>>>>>>> origin/Minigame1
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1135,6 +1199,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 5a740000
     m_LastClickedInstanceID: 29786
 =======
@@ -1142,6 +1207,11 @@ MonoBehaviour:
     m_LastClickedInstanceID: 0
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
     m_HadKeyboardFocusLastEvent: 1
+=======
+    m_SelectedInstanceIDs: 206d0000
+    m_LastClickedInstanceID: 27936
+    m_HadKeyboardFocusLastEvent: 0
+>>>>>>> origin/Minigame1
     m_ExpandedInstanceIDs: c62300005e8900005c8d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1214,6 +1284,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1205.6
     y: 0
     width: 330.40002
@@ -1223,11 +1294,14 @@ MonoBehaviour:
   m_ActualView: {fileID: 15}
 =======
     x: 1229.6
+=======
+    x: 1537
+>>>>>>> origin/Minigame1
     y: 0
-    width: 306.40002
-    height: 722.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 383
+    height: 939
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
   m_Panes:
@@ -1255,6 +1329,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1205.6
     y: 73.6
     width: 329.40002
@@ -1264,6 +1339,12 @@ MonoBehaviour:
     width: 305.40002
 >>>>>>> 1222e09796cffb69c333da4bf4baef40ad8955e1
     height: 701.8
+=======
+    x: 1537
+    y: 73
+    width: 382
+    height: 918
+>>>>>>> origin/Minigame1
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1275,7 +1356,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 108
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
