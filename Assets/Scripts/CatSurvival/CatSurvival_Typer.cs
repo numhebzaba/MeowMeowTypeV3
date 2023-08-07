@@ -17,7 +17,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public TMP_Text A_count = null;
     public TMP_Text A_error = null;
-
+    public GameObject TyperPanel;
     public GameObject SummaryUI;
     public TMP_Text[] data = null;
 
@@ -58,6 +58,14 @@ public class CatSurvival_Typer : MonoBehaviour
 
     private int Cat_HP = 3;
     public TMP_Text CatTextHP;
+
+    private float CountWordIsTrue = 0;
+    private float CountWordIsFalse = 0;
+    private double CountAccuracy;
+
+    public TMP_Text SummaryAccuracyText;
+    public TMP_Text SummaryTimeText;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -133,8 +141,9 @@ public class CatSurvival_Typer : MonoBehaviour
         CheckInput();
         //SetAnimationKeyboard(currentWord);
 
-        if (!CatSurvivalWordlist.IsWordLeft() && IsWordComplete())
+        if (/*!CatSurvivalWordlist.IsWordLeft() &&*/ IsWordComplete())
         {
+            TyperPanel.SetActive(false);
             SummaryUI.SetActive(true);
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
@@ -149,7 +158,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         TimeSpent.text = delayTimeSpan.ToString();
         wordTotalUI.text = "word :" + wordTotal.ToString();
-
+            
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
         if (TimeInIntValue <= 0)
             TimeInIntValue = 1;
@@ -163,13 +172,19 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public void ShowDataLetter()
     {
-        int i = 0;
-        foreach (var item in DataLetterList)
-        {
-            data[i].text = item.GetAllData.ToString();
-            Debug.Log(item.GetAllData);
-            i++;
-        }
+        double TimeSeccond = Math.Round(double.Parse(delayTimeSpan.TotalSeconds.ToString()));
+        double TimeMinut = Math.Round(double.Parse(delayTimeSpan.TotalMinutes.ToString()));
+
+        CalculateAccuracy();
+        SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
+        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond ;
+
+    }
+
+    private void CalculateAccuracy()
+    {
+        float AllCount = CountWordIsTrue + CountWordIsFalse;
+        CountAccuracy = Math.Round((CountWordIsTrue * 100) / AllCount);
     }
 
     private void CheckInput()
@@ -200,6 +215,8 @@ public class CatSurvival_Typer : MonoBehaviour
     {
         if (IsCorrectLetter(typedLetter))
         {
+            CountWordIsTrue++;
+
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -211,10 +228,10 @@ public class CatSurvival_Typer : MonoBehaviour
             //animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
             animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
 
-            if (IsWordComplete())
+            if (IsWordComplete())//loop word
             {
                 wordTotal = wordTotal + 1;
-                SetCurrentWord();
+                //SetCurrentWord();
             }
             return;
         }
@@ -224,6 +241,8 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public void IsFalse(string keyinput)
     {
+        CountWordIsFalse++;
+
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         ReducedHP();
@@ -258,7 +277,6 @@ public class CatSurvival_Typer : MonoBehaviour
         //modifiedText += "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + textString[0] + "</color>";
 
         //wordOutput.text = modifiedText;
-
         string newString = remainWord.Remove(0, 1);
         if (remainWord[0].ToString() == " ")
         {
@@ -289,7 +307,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
     private bool IsWordComplete()
     {
-        return remainWord.Length == 0;
+        return remainWord.Length == 1;
     }
 
     public void SetActiveKeyboard()
