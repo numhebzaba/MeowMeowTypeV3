@@ -40,6 +40,10 @@ public class DataManager : MonoBehaviour
 
     public List<Achievement> AchievementList = new List<Achievement>();
     public AchievementNotificationcontroller _achievementNotificationcontroller;
+    bool IsAchievementUIOpen = false;
+
+    public UIGameManager _UIGameManager;
+
 
     void Awake()
     {
@@ -72,10 +76,11 @@ public class DataManager : MonoBehaviour
         Debug.Log(userData.UserPassword);
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
 
+
     }
     public void UploadDataButton()
     {
-        StartCoroutine(UpdateDate(typer.wordPerMinute, typer.delayTimeSpan.ToString(@"hh\:mm\:ss"),typer.OverallAccuracy));
+        StartCoroutine(UpdateDate(typer.wordPerMinute, typer.delayTimeSpan.ToString(@"hh\:mm\:ss"), typer.OverallAccuracy));
 
     }
     private IEnumerator Login(string _email, string _password)
@@ -122,7 +127,7 @@ public class DataManager : MonoBehaviour
         string Date_StringValue = typer.aDate.ToString("MM:dd:yyyy hh:mm tt");
         //Set the currently logged in user Date
         Debug.Log(Date_StringValue);
-        
+
         Debug.Log(typer.aDate.ToString("MM/dd/yyyy hh:mm tt"));
         var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(Date_StringValue).Child("Date").SetValueAsync(Date_StringValue);
 
@@ -220,7 +225,7 @@ public class DataManager : MonoBehaviour
             //Time is now updated
         }
     }
-    private IEnumerator UpdateLetterCorrectTypedData( string letter, int Correct, string _Date)
+    private IEnumerator UpdateLetterCorrectTypedData(string letter, int Correct, string _Date)
     {
         //Set the currently logged in user Time
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Letters").Child(letter).Child("Correct").SetValueAsync(Correct);
@@ -236,7 +241,7 @@ public class DataManager : MonoBehaviour
             //Time is now updated
         }
     }
-    private IEnumerator UpdateLetterInCorrectTypedData(string letter, int Incorrect,  string _Date)
+    private IEnumerator UpdateLetterInCorrectTypedData(string letter, int Incorrect, string _Date)
     {
         //Set the currently logged in user Time
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Letters").Child(letter).Child("Incorrect").SetValueAsync(Incorrect);
@@ -387,7 +392,7 @@ public class DataManager : MonoBehaviour
             //Wpms are now updated
         }
     }
-   
+
     private IEnumerator LoadTheBestWpm(string _username, int _Wpm, string _Date, string _Time)
     {
 
@@ -417,13 +422,13 @@ public class DataManager : MonoBehaviour
             {
                 string username = childSnapshot.Child("Username").Value.ToString();
                 int ThebestWpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
-                
-                if(_Wpm > ThebestWpm)
+
+                if (_Wpm > ThebestWpm)
                 {
                     UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
                     Debug.Log("1st Best Word Per Minute");
                 }
-                else if(_Wpm > ThebestWpm)
+                else if (_Wpm > ThebestWpm)
                 {
                     Debug.Log("Best Word Per Minute does not change");
                 }
@@ -459,7 +464,7 @@ public class DataManager : MonoBehaviour
             //Wpms are now updated
         }
     }
-    private IEnumerator UpdateTheBestWpm_Wpm( int _Wpm)
+    private IEnumerator UpdateTheBestWpm_Wpm(int _Wpm)
     {
         var DBTask = DBreference.Child("leaderboard").Child(User.UserId).Child("Wpm").SetValueAsync(_Wpm);
 
@@ -512,7 +517,7 @@ public class DataManager : MonoBehaviour
             StartCoroutine(LoadHistoryData());
             HistoryUI.SetActive(true);
 
-        }else
+        } else
             HistoryUI.SetActive(false);
 
     }
@@ -595,7 +600,7 @@ public class DataManager : MonoBehaviour
                 int Wpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
                 string Time = childSnapshot.Child("Time").Value.ToString();
                 string Date = childSnapshot.Child("Date").Value.ToString();
-                Debug.Log(username+" : "+Wpm);
+                Debug.Log(username + " : " + Wpm);
                 //Instantiate new scoreboard elements
                 GameObject scoreboardElement = Instantiate(scoreElement, leaderboardContent);
                 scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
@@ -637,15 +642,15 @@ public class DataManager : MonoBehaviour
                 float AverageAccuracy = float.Parse(childSnapshot.Child("AverageAccuracy").Value.ToString());
                 float AverageSpeed = float.Parse(childSnapshot.Child("AverageSpeed").Value.ToString());
 
-                foreach(var switches in showKeyboardManager.SwitchesList)
+                foreach (var switches in showKeyboardManager.SwitchesList)
                 {
-                    if(switches.nameSwitch == childSnapshot.Key)
+                    if (switches.nameSwitch == childSnapshot.Key)
                     {
                         switches.AverageAccuracy = AverageAccuracy;
                         switches.AverageSpeed = AverageSpeed;
                     }
                 }
-                
+
                 Debug.Log(childSnapshot.Key);
                 Debug.Log(AverageAccuracy);
                 Debug.Log(AverageSpeed);
@@ -654,7 +659,7 @@ public class DataManager : MonoBehaviour
             }
             showKeyboardManager.ShowKeyboard();
         }
-        
+
     }
     public void LoadChallengeDataButton()
     {
@@ -720,12 +725,13 @@ public class DataManager : MonoBehaviour
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
     }
 
-    public IEnumerator LoadAchievementData()
+    public IEnumerator LoadPlayerAchievementData()
     {
         //Get all the users data ordered by Wpms amount
         //var DBTask = DBreference.Child("users").Child(User.UserId).Child("TheBestWpm").GetValueAsync();
-        var DBTask = DBreference.Child("achievement").GetValueAsync();
-     
+
+        var DBTask = DBreference.Child("achievement").OrderByChild("Id").GetValueAsync();
+
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)
@@ -744,37 +750,162 @@ public class DataManager : MonoBehaviour
             //}
 
             //Loop through every users UID
+            AchievementList.Clear();
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
 
                 string Id = childSnapshot.Child("Id").Value.ToString();
                 string Description = childSnapshot.Child("Description").Value.ToString();
                 string Title = childSnapshot.Child("Title").Value.ToString();
-                AchievementList.Add(new Achievement(Id,Description,Title));
+
+
+                var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("achievement").GetValueAsync();
+
+                yield return new WaitUntil(predicate: () => DBTask2.IsCompleted);
+
+                if (DBTask2.Result == null)
+                {
+                    //AchievementList.Add(new Achievement(Id, Description, Title, "locked"));
+                }
+                else
+                {
+                    //Data has been retrieved
+                    DataSnapshot snapshot2 = DBTask2.Result;
+
+                    //Destroy any existing scoreboard elements
+                    foreach (Transform child in historyContent.transform)
+                    {
+                        Destroy(child.gameObject);
+                    }
+
+                    //Loop through every users UID
+                    foreach (DataSnapshot childSnapshot2 in snapshot2.Children.Reverse<DataSnapshot>())
+                    {
+                        //string achievement = childSnapshot.Child("achievement").Value.ToString();
+                        string achievement = childSnapshot2.Value.ToString();
+                        if (achievement == "unlocked")
+                        {
+                            if (childSnapshot2.Key == Id)
+                            {
+                                AchievementList.Add(new Achievement(Id, Description, Title, "unlocked"));
+                                Debug.Log(Id + Description + "----------------------");
+
+                            }
+
+
+                        }
+                        else
+                        {
+
+
+
+                        }
+
+                        //Instantiate new scoreboard elements
+                    }
+
+                }
+                int temp = 0;
+                for (int i = 0; i < AchievementList.Count; i++)
+                {
+                    if (Id == AchievementList[i].Id)
+                    {
+
+                    }
+                    else
+                    {
+                        temp++;
+
+                    }
+
+                }
+                if (temp == AchievementList.Count)
+                {
+                    AchievementList.Add(new Achievement(Id, Description, Title, "locked"));
+                    Debug.Log(Id + Description + "+++++++++++++++++++++++");
+                }
+
+
+                //AchievementList.Add(new Achievement(Id,Description,Title));
                 AchievementList.Reverse();
 
-                Debug.Log(Id);
-                Debug.Log(Description);
-                Debug.Log(Title);
-                Debug.Log("----------------------------");
-
-                Debug.Log(AchievementList[0]);
 
 
-                //string Id = childSnapshot.Child("Id").Value.ToString();
-                //string Description = childSnapshot.Child("Description").Value.ToString();
-                //string Title = childSnapshot.Child("Title").Value.ToString();
-                //Instantiate new scoreboard elements
-                //GameObject scoreboardElement = Instantiate(scoreElement, leaderboardContent);
-                //scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+
+
+
             }
-            _achievementNotificationcontroller.ShowNoticationButton();
+            _achievementNotificationcontroller.LoadAchievementTable();
 
         }
     }
-    public void TEstButton()
+    public void LoadPlayerAchievementButton()
     {
-        StartCoroutine(LoadAchievementData());
+        if (!IsAchievementUIOpen)
+        {
+
+            _UIGameManager.UIArray[4].SetActive(true);
+            StartCoroutine(LoadPlayerAchievementData());
+            IsAchievementUIOpen = !IsAchievementUIOpen;
+        }
+        else
+        {
+            _UIGameManager.UIArray[4].SetActive(false);
+            IsAchievementUIOpen = !IsAchievementUIOpen;
+
+        }
+
     }
-    
+    public IEnumerator AchievementUnlocked(int AchievemenId)
+    {
+        //Get all the users data ordered by Wpms amount
+        //var DBTask = DBreference.Child("users").Child(User.UserId).Child("TheBestWpm").GetValueAsync();
+
+        var DBTask = DBreference.Child("achievement").OrderByChild("Id").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            ////Destroy any existing scoreboard elements
+            //foreach (Transform child in leaderboardContent.transform)
+            //{
+            //    Destroy(child.gameObject);
+            //}
+
+            //Loop through every users UID
+            AchievementList.Clear();
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+
+                string Id = childSnapshot.Child("Id").Value.ToString();
+                string Description = childSnapshot.Child("Description").Value.ToString();
+                string Title = childSnapshot.Child("Title").Value.ToString();
+
+                AchievementList.Add(new Achievement(Id,Description,Title,"unlocked"));
+                AchievementList.Reverse();
+
+
+
+
+
+            }
+            _achievementNotificationcontroller.ShowNoticationButton(AchievemenId);
+
+        }
+    }
+    public void showUnlockedAchievementButton(int AchievemenId)
+    {
+        AchievemenId = 0;
+        StartCoroutine(AchievementUnlocked(AchievemenId));
+
+    }
+
 }

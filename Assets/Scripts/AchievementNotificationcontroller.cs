@@ -11,12 +11,22 @@ public class AchievementNotificationcontroller : MonoBehaviour
     public int AchievemenId = 0;
 
     private Animator m_animator;
+
+    public GameObject achievementItemPrefab;
+    public Transform content;
+
+    [SerializeField][HideInInspector]
+    public List<GameObject> achievementItems;
     private void Awake()
     {
         m_animator = GetComponent<Animator>();
 
     }
-    public void ShowNoticationButton()
+    private void Start()
+    {
+        
+    }
+    public void ShowNoticationButton(int AchievemenId)
     {
 
         Debug.Log(_DataManager.AchievementList[AchievemenId]);
@@ -28,5 +38,37 @@ public class AchievementNotificationcontroller : MonoBehaviour
         AchievementTitleLabel.text = achievement.Title;
         m_animator.SetTrigger("Appear");
     }
-         
+    [ContextMenu("LoadAchievementsTable")]
+    public void LoadAchievementTable()
+    {
+        foreach (GameObject controller in achievementItems)
+        {
+            Debug.Log(controller);
+            controller.gameObject.SetActive(false);
+            DestroyImmediate(controller.gameObject);
+        }
+        achievementItems.Clear();
+        for(int i =0;i< _DataManager.AchievementList.Count; i++)
+        {
+            
+            GameObject obj = Instantiate(achievementItemPrefab, content);
+            AchievementItemController controller = obj.GetComponent<AchievementItemController>();
+            if (_DataManager.AchievementList[i].State == "unlocked")
+            {
+                controller.unlocked = true;
+
+            }
+            else
+            {
+                controller.unlocked = false;
+
+            }
+            controller.achivement = _DataManager.AchievementList[i];
+            controller.RefreshView();
+            achievementItems.Add(obj);
+        }
+        Debug.Log(achievementItems.Count);
+
+    }
+     
 }
