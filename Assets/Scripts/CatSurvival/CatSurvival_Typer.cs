@@ -65,6 +65,9 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public TMP_Text SummaryAccuracyText;
     public TMP_Text SummaryTimeText;
+    public TMP_Text SummaryCorrect;
+    public TMP_Text SummaryInCorrect;
+
 
     private void Awake()
     {
@@ -166,7 +169,7 @@ public class CatSurvival_Typer : MonoBehaviour
             wordPerMinute = 0;
         else
             wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
-        WordPerminuteText.text = "WPM :" + wordPerMinute.ToString();
+        WordPerminuteText.text = "WPM : " + wordPerMinute.ToString();
 
     }
 
@@ -178,7 +181,8 @@ public class CatSurvival_Typer : MonoBehaviour
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
         SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond ;
-
+        SummaryCorrect.text = "Correct : " + CountWordIsTrue;
+        SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
     }
 
     private void CalculateAccuracy()

@@ -21,9 +21,9 @@ public class CatSurvival_wordList : MonoBehaviour
     {
         //"ffff","ffff","ffff","jjjj","jjjj","jjjj","dddd","dddd","dddd","kkkk","kkkk","kkkk",
         //"ssss", "ssss", "ssss","llll","llll","llll","aaaa","aaaa","aaaa",";;;;",";;;;"
-        "Trot","Charge","Young","Synonymous","Eminent","Stereotyped","Lunch","Daily","Wilderness"
-        ,"Yard","Dance","Deep","Allow","Lace","Colossal","Boiling","Porter","Like","Fire","Tough"
-        ,"Dull","Kick","Stitch","Press","Houses","Look","Overt","Little","Step","Invite"
+        "Trot","Charge","Young"/*,"Synonymous","Eminent","Stereotyped","Lunch","Daily","Wilderness"*/
+        //,"Yard","Dance","Deep","Allow","Lace","Colossal","Boiling","Porter","Like","Fire","Tough"
+        //,"Dull","Kick","Stitch","Press","Houses","Look","Overt","Little","Step","Invite"
         //,"Courageous","Murky","Invent","Clover","Arrive","Colossal","Whistle","Guard","Troubled","Easy"
         //,"Momentous","Sneeze","Serious","Abashed","Heavy","General","Cent","Slip","Opposite"
         //,"Loose","Harbor","Rhetorical","Gabby","Stomach","Mountainous","Cool","Elderly","Treatment","Plant","Pickle"
