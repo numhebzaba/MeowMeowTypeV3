@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using UnityEditor.Animations;
+using UnityEditor.Animations;   
 
-public class CatSurvival_Typer : MonoBehaviour
+public class CatSquidGame_Typer : MonoBehaviour
 {
-    public CatSurvival_wordList CatSurvivalWordlist = null;
+    public CatSquidGame_WordList CatSurvivalWordlist = null;
     public TMP_Text wordOutput = null;
     public TMP_Text wordOutputIsTrue = null;
     public TMP_Text nextWordOutput = null;
@@ -85,7 +85,7 @@ public class CatSurvival_Typer : MonoBehaviour
         IsKeyboardActive = true;
 
         LoadSkinWithSkinSelect();
-        SetReferenceAnimatorSkin();
+        //SetReferenceAnimatorSkin();
         CatTextHP.text = Cat_HP.ToString();
     }
 
@@ -161,7 +161,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         TimeSpent.text = delayTimeSpan.ToString();
         wordTotalUI.text = "word :" + wordTotal.ToString();
-            
+
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
         if (TimeInIntValue <= 0)
             TimeInIntValue = 1;
@@ -180,7 +180,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
-        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond ;
+        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
     }
@@ -217,20 +217,23 @@ public class CatSurvival_Typer : MonoBehaviour
 
     private void EnterLetter(string typedLetter)
     {
+
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
 
-            loopBg_1.IsMove = true;
-            loopBg_2.IsMove = true;
-            loopBg_3.IsMove = true;
-            loopBg_4.IsMove = true;
+            //loopBg_1.IsMove = true;
+            //loopBg_2.IsMove = true;
+            //loopBg_3.IsMove = true;
+            //loopBg_4.IsMove = true;
 
             CheckLetter(typedLetter);
             RemoveLetter();
-            BGanimator.speed = 1; //play background animation//
-            //animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
-            animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
+            /*BGanimator.speed = 1;*/ //play background animation//
+                                      //animationStateController.animator.SetBool(animationStateController.isSittingHash, false);
+
+            //animationStateController.animator.SetInteger(animationStateController.AnimationHash, 23);
+
 
             if (IsWordComplete())//loop word
             {
@@ -239,18 +242,20 @@ public class CatSurvival_Typer : MonoBehaviour
             }
             return;
         }
+
         IsFalse(typedLetter);
 
     }
 
     public void IsFalse(string keyinput)
     {
+        //BGanimator.speed = 0;
         CountWordIsFalse++;
 
-        BGanimator.speed = 0; //Pause background animation//
+        Debug.Log("Speed Down");
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         ReducedHP();
-        animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
+        //animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
 
 
         foreach (var letter in DataLetterList)
@@ -261,10 +266,10 @@ public class CatSurvival_Typer : MonoBehaviour
                 letter.UpdateWrongLetterData();
             }
         }
-        loopBg_1.IsMove = false;
-        loopBg_2.IsMove = false;
-        loopBg_3.IsMove = false;
-        loopBg_4.IsMove = false;
+        //loopBg_1.IsMove = false;
+        //loopBg_2.IsMove = false;
+        //loopBg_3.IsMove = false;
+        //loopBg_4.IsMove = false;
 
         unCorrectedError++;
     }
@@ -349,11 +354,10 @@ public class CatSurvival_Typer : MonoBehaviour
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
     }
-    
+
     private void ReducedHP()
     {
         Cat_HP--;
         CatTextHP.text = Cat_HP.ToString();
     }
-
 }

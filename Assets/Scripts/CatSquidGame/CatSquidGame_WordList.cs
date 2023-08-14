@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 
-public class CatSurvival_wordList : MonoBehaviour
+public class CatSquidGame_WordList : MonoBehaviour
 {
     public TMP_InputField WordInput;
     public TMP_Text TextListOutput;
@@ -32,11 +32,13 @@ public class CatSurvival_wordList : MonoBehaviour
         //,"Absorbing","Different","Toad","Post","Horse","Understood","Complete","Phobic","Distinct","Worm","Functional"
     };
 
-    public CatSurvival_Typer CustomTyper;
+    public CatSquidGame_Typer CustomTyper;
 
     void Start()
     {
-        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = false;
+        GameObject.Find("Typer").GetComponent<CatSquidGame_Typer>().enabled = false;
+        GameObject.Find("Typer").GetComponent<CatSquidGameChecker>().enabled = false;
+
         CoundownPanel.SetActive(true);
         StartCoroutine(CountdownAndStart());
     }
@@ -63,7 +65,10 @@ public class CatSurvival_wordList : MonoBehaviour
             }
         }
         CoundownPanel.SetActive(false);
-        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = true;
+        GameObject.Find("Typer").GetComponent<CatSquidGame_Typer>().enabled = true;
+        GameObject.Find("Typer").GetComponent<CatSquidGameChecker>().enabled = true;
+
+
     }
 
     public void Addtext()
@@ -100,10 +105,8 @@ public class CatSurvival_wordList : MonoBehaviour
 
     public void IsStartGame()
     {
-        GameObject.Find("Typer").GetComponent<CatSurvival_Typer>().enabled = true;
+        GameObject.Find("Typer").GetComponent<CatSquidGame_Typer>().enabled = true;
         TyperPanel.SetActive(true);
-
-
     }
 
 
@@ -190,6 +193,4 @@ public class CatSurvival_wordList : MonoBehaviour
         }
         return true;
     }
-
-    
 }
