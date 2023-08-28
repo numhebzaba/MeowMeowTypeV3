@@ -5,9 +5,9 @@ using TMPro;
 using System;
 using UnityEditor.Animations;
 
-public class CatSurvival_Typer : MonoBehaviour
+public class CatDeadZone_Typer : MonoBehaviour
 {
-    public CatSurvival_wordList CatSurvivalWordList = null;
+    public CatDeadZoneWordList CatDeadZoneWordList = null;
     public TMP_Text wordOutput = null;
     public TMP_Text wordOutputIsTrue = null;
     public TMP_Text nextWordOutput = null;
@@ -57,7 +57,6 @@ public class CatSurvival_Typer : MonoBehaviour
     private GameObject animControllerObject;
 
     private int Cat_HP = 3;
-    public TMP_Text CatTextHP;
 
     private float CountWordIsTrue = 0;
     private float CountWordIsFalse = 0;
@@ -68,6 +67,7 @@ public class CatSurvival_Typer : MonoBehaviour
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
 
+    public DeadZoneDetect DetectDeadZone;
 
     private void Awake()
     {
@@ -86,7 +86,6 @@ public class CatSurvival_Typer : MonoBehaviour
 
         LoadSkinWithSkinSelect();
         SetReferenceAnimatorSkin();
-        CatTextHP.text = Cat_HP.ToString();
     }
 
     private void SetReferenceAnimatorSkin()
@@ -124,9 +123,9 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public void SetCurrentWord()
     {
-        currentWord = CatSurvivalWordList.getWord();
+        currentWord = CatDeadZoneWordList.getWord();
         SetRemainWord(currentWord);
-        nextWord = CatSurvivalWordList.getNextWord();
+        nextWord = CatDeadZoneWordList.getNextWord();
         SetNextRemainWord(nextWord);
     }
     private void SetRemainWord(string newString)
@@ -142,12 +141,15 @@ public class CatSurvival_Typer : MonoBehaviour
     void Update()
     {
         CheckInput();
+        Debug.Log(wordPerMinute);
+        
         //SetAnimationKeyboard(currentWord);
 
         if (/*!CatSurvivalWordlist.IsWordLeft() &&*/ IsWordComplete())
         {
             TyperPanel.SetActive(false);
             SummaryUI.SetActive(true);
+            DetectDeadZone.GetComponent<DeadZoneDetect>().enabled = false;
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
@@ -161,7 +163,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         TimeSpent.text = delayTimeSpan.ToString();
         wordTotalUI.text = "word :" + wordTotal.ToString();
-            
+
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
         if (TimeInIntValue <= 0)
             TimeInIntValue = 1;
@@ -180,7 +182,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
-        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond ;
+        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
     }
@@ -219,6 +221,7 @@ public class CatSurvival_Typer : MonoBehaviour
     {
         if (IsCorrectLetter(typedLetter))
         {
+            DetectDeadZone.IsTrueType();
             CountWordIsTrue++;
 
             loopBg_1.IsMove = true;
@@ -245,6 +248,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public void IsFalse(string keyinput)
     {
+        DetectDeadZone.IsFaseType();
         CountWordIsFalse++;
 
         BGanimator.speed = 0; //Pause background animation//
@@ -349,11 +353,10 @@ public class CatSurvival_Typer : MonoBehaviour
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
     }
-    
+
     private void ReducedHP()
     {
         Cat_HP--;
-        CatTextHP.text = Cat_HP.ToString();
     }
 
 }

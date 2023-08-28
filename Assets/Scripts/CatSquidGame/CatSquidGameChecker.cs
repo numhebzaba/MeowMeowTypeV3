@@ -109,7 +109,7 @@ public class CatSquidGameChecker : MonoBehaviour
     {
         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKey(keyCode) && !(Input.GetKey(KeyCode.LeftShift)))
+            if (Input.GetKey(keyCode) && !(Input.GetKeyDown(KeyCode.LeftShift)))
             {
                 loopBg_1.IsMove = true;
                 loopBg_2.IsMove = true;

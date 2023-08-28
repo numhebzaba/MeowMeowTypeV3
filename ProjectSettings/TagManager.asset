@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CharacterSelectionCAM
   - PlayerSkin
+  - DeadZone
   layers:
   - Default
   - TransparentFX
