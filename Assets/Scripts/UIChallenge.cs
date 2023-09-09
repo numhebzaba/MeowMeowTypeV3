@@ -25,7 +25,7 @@ public class UIChallenge : MonoBehaviour
         else
         {
             _UIGameManager.ClearScreen();
-            _UIGameManager.showUI(0);// show Main screen
+            _UIGameManager.showUI(6);// show Main screen
             return;
         }
 

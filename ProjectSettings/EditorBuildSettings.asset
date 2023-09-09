@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChallengeMode.unity
     guid: 49b72bd820fa7274f855c14d68dd7bb7
+  - enabled: 1
+    path: Assets/Scenes/Select_Character.unity
+    guid: 7b5d7f14871922c4998714a977f4507b
   m_configObjects: {}
