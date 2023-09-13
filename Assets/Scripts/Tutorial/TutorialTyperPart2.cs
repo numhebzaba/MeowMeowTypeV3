@@ -138,7 +138,7 @@ public class TutorialTyperPart2 : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
-                ShowDataLetter();
+                //ShowDataLetter();
                 IsGameFinish = true;
             }
         }

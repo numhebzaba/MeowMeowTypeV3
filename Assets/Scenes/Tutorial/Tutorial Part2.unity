@@ -1883,7 +1883,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 522560714}
-  - component: {fileID: 522560713}
   - component: {fileID: 522560715}
   m_Layer: 0
   m_Name: TutorialTyper
@@ -1892,72 +1891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &522560713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522560712}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d03b923c1ea254781837a2deb65051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wordList: {fileID: 0}
-  wordOutput: {fileID: 1034624888}
-  nextWordOutput: {fileID: 892718105}
-  wordTotalUI: {fileID: 267893629}
-  TimeSpent: {fileID: 1320796687}
-  WordPerminuteText: {fileID: 1923964059}
-  A_count: {fileID: 0}
-  A_error: {fileID: 0}
-  SummaryUI: {fileID: 210092490}
-  data:
-  - {fileID: 458962109}
-  - {fileID: 276313117}
-  - {fileID: 109239803}
-  - {fileID: 643699788}
-  - {fileID: 1261965847}
-  - {fileID: 528563641}
-  - {fileID: 322337099}
-  - {fileID: 975889470}
-  - {fileID: 2116372741}
-  - {fileID: 244335991}
-  - {fileID: 1192089377}
-  - {fileID: 2139580804}
-  - {fileID: 1090926718}
-  - {fileID: 1583544023}
-  - {fileID: 2007622528}
-  - {fileID: 1795860154}
-  - {fileID: 1951229661}
-  - {fileID: 1475330473}
-  - {fileID: 385968066}
-  - {fileID: 1617950462}
-  - {fileID: 27542703}
-  - {fileID: 868119071}
-  - {fileID: 318553255}
-  - {fileID: 179138815}
-  - {fileID: 1160700129}
-  - {fileID: 1310588890}
-  accuracy: 0
-  wordTotal: 0
-  allTypedEntries: 0
-  unCorrectedError: 0
-  wordPerMinute: 0
-  TimeInMinute: 0
-  animationStateController: {fileID: 0}
-  BGanimator: {fileID: 17983476}
-  loopBgArray_1: {fileID: 105804904}
-  loopBgArray_2: {fileID: 17983475}
-  loopBgArray_3: {fileID: 579538113}
-  loopBgArray_4: {fileID: 1994524467}
-  animator: {fileID: 1212957063}
-  Keyboard: {fileID: 1212957062}
-  IsKeyboardActive: 0
-  CharacterDB: {fileID: 11400000, guid: 9f57d4b9807d73d498c7aebcf2c32fcb, type: 2}
-  AtworkSkin: {fileID: 0}
-  PlayerPosition: {fileID: 699538290}
 --- !u!4 &522560714
 Transform:
   m_ObjectHideFlags: 0
@@ -2563,6 +2496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3366d5ad264d74f4d8054e20e4be10f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SumaryUi: {fileID: 210092490}
+  ToturialTyper: {fileID: 522560712}
 --- !u!1 &868119069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,7 +2852,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522560713}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialTyper, Assembly-CSharp
         m_MethodName: SetActiveKeyboard
         m_Mode: 1
@@ -5149,7 +5084,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522560713}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialTyper, Assembly-CSharp
         m_MethodName: SetActiveKeyboard
         m_Mode: 1
