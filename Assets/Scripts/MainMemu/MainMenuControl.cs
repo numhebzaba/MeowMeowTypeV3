@@ -45,4 +45,10 @@ public class MainMenuControl : MonoBehaviour
     {
         _UIChallenge.ShowUIChallenge();
     }
+
+    public void ShowTutorialUi()
+    {
+        MainMenuManager.showUI(7);
+    }
+    
 }
