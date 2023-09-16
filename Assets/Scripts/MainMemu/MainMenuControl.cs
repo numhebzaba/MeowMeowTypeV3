@@ -50,5 +50,10 @@ public class MainMenuControl : MonoBehaviour
     {
         MainMenuManager.showUI(7);
     }
+
+    public void ShowMinigameUi()
+    {
+        MainMenuManager.showUI(8);
+    }
     
 }

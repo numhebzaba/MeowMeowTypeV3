@@ -13,6 +13,8 @@ public class CatDeadZoneChecker : MonoBehaviour
     public GameObject HPBar;
     public AnimatorControllerState animationStateController;
     private GameObject animControllerObject;
+    public LoopBg loopBg_1, loopBg_2, loopBg_3, loopBg_4;
+
 
 
     private void Start()
@@ -33,6 +35,10 @@ public class CatDeadZoneChecker : MonoBehaviour
         if (HPBar.transform.localScale.x == 0)
         {
             GameObject.Find("Typer").GetComponent<CatDeadZone_Typer>().enabled = false;
+            loopBg_1.IsMove = false;
+            loopBg_2.IsMove = false;
+            loopBg_3.IsMove = false;
+            loopBg_4.IsMove = false;
             animationStateController.animator.SetInteger(animationStateController.AnimationHash, 6);
 
             GameOverPanel.SetActive(true);
