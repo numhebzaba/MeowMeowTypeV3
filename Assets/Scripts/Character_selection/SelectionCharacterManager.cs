@@ -10,12 +10,21 @@ public class SelectionCharacterManager : MonoBehaviour
     public GameObject AtworkSkin;
 
     private int selectedOption;
-    private int IndexCharacterSelected;
+    public int IndexCharacterSelected;
 
     public GameObject SelectButton;
     public GameObject IsSelectedButton;
+    public GameObject LockedButton;
+
+    public GameObject BuyPanel;
+    public GameObject CloseBuyPanelButton;
 
     [SerializeField] GameObject[] Camera;
+
+    public ShopDataManager ShopDataManager;
+
+    public List<string> stateSkinList = new List<string>();
+
     void Start()
     {
         Load();
@@ -35,11 +44,14 @@ public class SelectionCharacterManager : MonoBehaviour
         if (selectedOption >= CharacterDB.CharacterCount)
         {
             selectedOption = 0;
+            IndexCharacterSelected = 0;
+
         }
         UpdateCharacter(selectedOption);
         UpdateCamera(selectedOption);
 
         IScharacterSelected(IndexCharacterSelected);
+        closeBuyPanel();
     }
 
     public void BackOption()
@@ -49,10 +61,12 @@ public class SelectionCharacterManager : MonoBehaviour
         if (selectedOption < 0  )
         {
             selectedOption = CharacterDB.CharacterCount - 1;
+            IndexCharacterSelected = CharacterDB.CharacterCount - 1;
         }
         UpdateCharacter(selectedOption);
         UpdateCamera(selectedOption);
         IScharacterSelected(IndexCharacterSelected);
+        closeBuyPanel();
 
     }
 
@@ -88,6 +102,7 @@ public class SelectionCharacterManager : MonoBehaviour
 
     public void Save()
     {
+        
         PlayerPrefs.SetInt("selectedOption", selectedOption);
         IScharacterSelected(IndexCharacterSelected);
 
@@ -98,15 +113,41 @@ public class SelectionCharacterManager : MonoBehaviour
         SceneManager.LoadScene(ScenceID);
     }
 
-    private void IScharacterSelected(int IndexCharacterSelected)
+    public void IScharacterSelected(int IndexCharacterSelected)
     {
-        if (PlayerPrefs.GetInt("selectedOption") == IndexCharacterSelected)
+        //for(int i =0;i<= ShopDataManager.stateSkinArray.Length; i++)
+        //{
+
+        //}
+        if (PlayerPrefs.GetInt("selectedOption") == IndexCharacterSelected )
         {
             SelectButton.SetActive(false);
             IsSelectedButton.SetActive(true);
+            LockedButton.SetActive(false);
+
             return;
+        }else if (stateSkinList[IndexCharacterSelected] == "locked")
+        {
+            SelectButton.SetActive(false);
+            IsSelectedButton.SetActive(false);
+            LockedButton.SetActive(true);
+            return;
+
         }
         SelectButton.SetActive(true);
         IsSelectedButton.SetActive(false);
+        LockedButton.SetActive(false);
+
+    }
+    public void showBuyPanel()
+    {
+        if(!BuyPanel.activeSelf)
+            BuyPanel.SetActive(true);
+        else 
+            BuyPanel.SetActive(false);
+    }
+    public void closeBuyPanel()
+    {
+        BuyPanel.SetActive(false);
     }
 }
