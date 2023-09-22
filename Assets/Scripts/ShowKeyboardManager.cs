@@ -26,17 +26,17 @@ public class ShowKeyboardManager : MonoBehaviour
     public void ShowAverageAccuracyButton()
     {
         SwitchColorButton("Acc");
-        if (IsShowKeyboard)
-        {
-            _UIGameManager.ClearScreen();
-            _UIGameManager.showUI(2);// show tracking screen
-        }
-        else
-        {
-            _UIGameManager.ClearScreen();
-            _UIGameManager.showUI(0);// show Main screen
-            return;
-        }
+        //if (IsShowKeyboard)
+        //{
+        //    _UIGameManager.ClearScreen();
+        //    _UIGameManager.showUI(2);// show tracking screen
+        //}
+        //else
+        //{
+        //    _UIGameManager.ClearScreen();
+        //    _UIGameManager.showUI(0);// show Main screen
+        //    return;
+        //}
 
         foreach(var Switches in SwitchesList)
         {
@@ -64,17 +64,17 @@ public class ShowKeyboardManager : MonoBehaviour
     public void ShowAverageSpeedButton()
     {
         SwitchColorButton("Speed");
-        if (IsShowKeyboard)
-        {
-            _UIGameManager.ClearScreen();
-            _UIGameManager.showUI(2);// show tracking screen
-        }
-        else
-        {
-            _UIGameManager.ClearScreen();
-            _UIGameManager.showUI(0);// show Main screen
-            return;
-        }
+        //if (IsShowKeyboard)
+        //{
+        //    _UIGameManager.ClearScreen();
+        //    _UIGameManager.showUI(2);// show tracking screen
+        //}
+        //else
+        //{
+        //    _UIGameManager.ClearScreen();
+        //    _UIGameManager.showUI(0);// show Main screen
+        //    return;
+        //}
 
         foreach (var Switches in SwitchesList)
         {

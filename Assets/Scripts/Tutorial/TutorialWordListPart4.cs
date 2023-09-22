@@ -6,7 +6,8 @@ using System.Linq;
 
 public class TutorialWordListPart4 : MonoBehaviour
 {
-
+    public GameObject SumaryUi;
+    public GameObject ToturialTyper;
 
     private List<string> workingWords = new List<string>();
 
@@ -26,6 +27,10 @@ public class TutorialWordListPart4 : MonoBehaviour
 
     void Update()
     {
+        if (SumaryUi.active == true)
+        {
+            ToturialTyper.GetComponent<TutorialTyperPart4>().enabled = false;
+        }
         //Debug.Log(workingWords.Count);
         //Debug.Log(workingWords.First());
     }
@@ -70,7 +75,7 @@ public class TutorialWordListPart4 : MonoBehaviour
     {
         string newWord = string.Empty;
 
-        if (workingWords.Count >= 1)
+        if (workingWords.Count > 1)
         {
             newWord = workingWords[0 + 1];
         }

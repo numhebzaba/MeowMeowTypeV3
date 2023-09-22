@@ -16,8 +16,6 @@ public class UIChallenge : MonoBehaviour
         IsShowKeyboard = !IsShowKeyboard;
         if (IsShowKeyboard)
         {
-            
-            _UIGameManager.ClearScreen();
             _UIGameManager.showUI(3);// show challenge screen
             StartCoroutine(_DataManager.LoadChallengeData());
 

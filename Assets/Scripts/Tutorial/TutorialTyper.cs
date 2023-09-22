@@ -129,6 +129,7 @@ public class TutorialTyper : MonoBehaviour
     }
     void Update()
     {
+       
         CheckInput();
         SetAnimationKeyboard(currentWord);
 
@@ -138,7 +139,7 @@ public class TutorialTyper : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
-                ShowDataLetter();
+                //ShowDataLetter();
                 IsGameFinish = true;
             }
         }

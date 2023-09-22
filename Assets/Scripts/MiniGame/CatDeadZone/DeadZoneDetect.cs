@@ -11,7 +11,7 @@ public class DeadZoneDetect : MonoBehaviour
     public GameObject DeadZone;
     public Transform startMarker;   // ตำแหน่งเริ่มต้น
     public Transform endMarker;     // ตำแหน่งปลายทาง
-    public float lerpSpeed = 1.0f;  // ความเร็วในการเคลื่อนที่ระหว่างตำแหน่ง
+    public float lerpSpeed;  // ความเร็วในการเคลื่อนที่ระหว่างตำแหน่ง
     private Rigidbody rb;
 
     private float startTime;
@@ -63,7 +63,7 @@ public class DeadZoneDetect : MonoBehaviour
     public void StartLerp()
     {
         Vector3 direction = (DeadZone.transform.position - endMarker.position);
-        rb.MovePosition(transform.position - direction * Time.deltaTime);
+        rb.MovePosition(transform.position - direction *lerpSpeed* Time.deltaTime);
     }
 
     private void ReversLerp()

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GamePlay.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/TutorialPart1.unity
+    path: Assets/Scenes/Tutorial/TutorialPart1.unity
     guid: 79b96ab0e1f2d97469d246253a4a9c50
   - enabled: 1
     path: Assets/Scenes/Custom_Mode.unity
@@ -29,4 +29,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Select_Character.unity
     guid: 7b5d7f14871922c4998714a977f4507b
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial Part2.unity
+    guid: 6191a505275ee77438f4719488b4af66
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial Part3.unity
+    guid: c5801bb2ba5c76d46bc4e35410a7fbf7
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial Part4.unity
+    guid: 5978786eee5d7404b9bd134eca430550
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Cat_DeadZone.unity
+    guid: 079dd48c677d88a48aa837fe75616b08
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Cat_SquidGame.unity
+    guid: 8fcd0f8526ac33e46bf24a5f385b7ce3
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Cat_Survival.unity
+    guid: 155173c900d27c444aceb636f8a2edc3
   m_configObjects: {}
