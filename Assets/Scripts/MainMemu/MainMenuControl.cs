@@ -55,5 +55,11 @@ public class MainMenuControl : MonoBehaviour
     {
         MainMenuManager.showUI(8);
     }
-    
+
+    public void ShowProfileUI()
+    {
+        MainMenuManager.showUI(9);
+
+    }
+
 }

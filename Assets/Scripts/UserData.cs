@@ -10,6 +10,8 @@ public class UserData : MonoBehaviour
     public string UserPassword;
 
     public TMP_Text UserName_text;
+    public TMP_Text Email_text;
+
     public bool IsTestMode = false;
     private void Awake()
     {
@@ -38,7 +40,8 @@ public class UserData : MonoBehaviour
 
     private void Start()
     {
-        UserName_text.text = $"PlayerName : {UserName.ToString()}";
+        UserName_text.text = $"{UserName.ToString()}";
+        Email_text.text = $"{UserEmail.ToString()}";
     }
 
 }
