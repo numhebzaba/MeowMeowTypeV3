@@ -41,7 +41,6 @@ public class UserData : MonoBehaviour
     private void Start()
     {
         UserName_text.text = $"{UserName.ToString()}";
-        Email_text.text = $"{UserEmail.ToString()}";
     }
 
 }
