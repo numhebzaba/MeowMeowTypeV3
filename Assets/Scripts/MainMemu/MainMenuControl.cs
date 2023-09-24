@@ -21,6 +21,11 @@ public class MainMenuControl : MonoBehaviour
         MainMenuManager.showUI(6);
     }
 
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
     public void ShopButton()
     {
         SceneManager.LoadScene("Select_Character",LoadSceneMode.Single);
