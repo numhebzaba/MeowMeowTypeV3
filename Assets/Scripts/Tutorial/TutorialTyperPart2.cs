@@ -56,6 +56,17 @@ public class TutorialTyperPart2 : MonoBehaviour
 
     public GameObject PlayerPosition;
 
+    public GameObject SummaryPanel;
+
+    private float CountWordIsTrue = 0;
+    private float CountWordIsFalse = 0;
+    private double CountAccuracy;
+
+    public TMP_Text SummaryAccuracyText;
+    public TMP_Text SummaryTimeText;
+    public TMP_Text SummaryCorrect;
+    public TMP_Text SummaryInCorrect;
+
 
     private void Awake()
     {
@@ -69,6 +80,7 @@ public class TutorialTyperPart2 : MonoBehaviour
         // BGanimator = GetComponent<Animator>();
         BGanimator.speed = 0;
         SummaryUI.SetActive(false);
+        SummaryPanel.SetActive(false);
         SetCurrentWord();
         AddEngLetterlist();
         IsKeyboardActive = true;
@@ -134,11 +146,11 @@ public class TutorialTyperPart2 : MonoBehaviour
 
         if (!wordList.IsWordLeft() && IsWordComplete())
         {
-            SummaryUI.SetActive(true);
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
-                //ShowDataLetter();
+                SummaryPanel.SetActive(true);
+                ShowDataLetterSummary();
                 IsGameFinish = true;
             }
         }
@@ -199,6 +211,7 @@ public class TutorialTyperPart2 : MonoBehaviour
     {
         if (IsCorrectLetter(typedLetter))
         {
+            CountWordIsTrue++;
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -220,9 +233,27 @@ public class TutorialTyperPart2 : MonoBehaviour
         IsFalse(typedLetter);
 
     }
+    public void ShowDataLetterSummary()
+    {
+        double TimeSeccond = Math.Round(double.Parse(delayTimeSpan.TotalSeconds.ToString()));
+        double TimeMinut = Math.Round(double.Parse(delayTimeSpan.TotalMinutes.ToString()));
+
+        CalculateAccuracy();
+        SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
+        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
+        SummaryCorrect.text = "Correct : " + CountWordIsTrue;
+        SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
+    }
+
+    private void CalculateAccuracy()
+    {
+        float AllCount = CountWordIsTrue + CountWordIsFalse;
+        CountAccuracy = Math.Round((CountWordIsTrue * 100) / AllCount);
+    }
 
     public void IsFalse(string keyinput)
     {
+        CountWordIsFalse++;
         BGanimator.speed = 0; //Pause background animation//
        //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
