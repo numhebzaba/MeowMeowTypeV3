@@ -13,7 +13,7 @@ using System;
 public class ShopDataManager : MonoBehaviour
 {
     public int UserCurrency = 0;
-    public int SkinPrice = 2;
+    public int SkinPrice = 150;
     public GameObject[] skinArray;
     public Button[] BuyButtonArray;
     //public List<string> stateSkinList= new List<string>();
@@ -62,7 +62,7 @@ public class ShopDataManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
-        selectionCharacterManager.GetComponent<SelectionCharacterManager>();
+        //selectionCharacterManager.GetComponent<SelectionCharacterManager>();
 
     }
     private IEnumerator Login(string _email, string _password)
@@ -76,7 +76,7 @@ public class ShopDataManager : MonoBehaviour
 
         
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         StartCoroutine(UpateDatabaseCurrencyUser());
         
@@ -130,7 +130,7 @@ public class ShopDataManager : MonoBehaviour
                 string coin = childSnapshot.Value.ToString();
                 Debug.Log("Coin : "+coin);
 
-                Currency_text.text = $"Currency : {coin.ToString()}";
+                Currency_text.text = $"{coin.ToString()}";
 
             }
 
@@ -149,7 +149,7 @@ public class ShopDataManager : MonoBehaviour
         }
         else
         {
-            Currency_text.text = $"Currency : {0}";
+            Currency_text.text = $"{0}";
         }
         StartCoroutine(CreateSkinUserData());
     }
@@ -303,7 +303,7 @@ public class ShopDataManager : MonoBehaviour
         StartCoroutine(UpateDatabaseCurrencyUser());
 
         //StartCoroutine(LoadSkinUserData());
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         selectionCharacterManager.IScharacterSelected(indexSkin);
         Debug.Log("Upated Skin already");
     }

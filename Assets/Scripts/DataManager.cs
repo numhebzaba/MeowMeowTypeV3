@@ -44,6 +44,8 @@ public class DataManager : MonoBehaviour
 
     public UIGameManager _UIGameManager;
 
+    public TMP_Text Currency_text;
+
 
     void Awake()
     {
@@ -75,7 +77,7 @@ public class DataManager : MonoBehaviour
         Debug.Log(userData.UserEmail);
         Debug.Log(userData.UserPassword);
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
-
+        
 
     }
     public void UploadDataButton()
@@ -97,6 +99,7 @@ public class DataManager : MonoBehaviour
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
 
         //StartCoroutine(UpdateUsernameDatabase(userData.UserName));
+        StartCoroutine(UpateDatabaseCurrencyUser());
 
 
 
@@ -907,6 +910,38 @@ public class DataManager : MonoBehaviour
         StartCoroutine(AchievementUnlocked(AchievemenId));
 
     }
-    
+    public IEnumerator UpateDatabaseCurrencyUser()
+    {
+        //Get all the users data ordered by Wpms amount
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("Shop").Child("Currency").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            Currency_text.text = $"{0}"; Currency_text.text = $"{0}";
+        }
+        else
+        {
+            DataSnapshot snapshot = DBTask.Result;
+
+
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+
+                string coin = childSnapshot.Value.ToString();
+                Debug.Log("Coin : " + coin);
+
+                Currency_text.text = $"{coin.ToString()}";
+
+            }
+
+        }
+       
+    }
 
 }
