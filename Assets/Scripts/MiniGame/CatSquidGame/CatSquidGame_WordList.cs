@@ -15,6 +15,8 @@ public class CatSquidGame_WordList : MonoBehaviour
     string StringInput;
     string CurrentListText = null;
 
+    public GameObject WinerPanel;
+    public GameObject GameOverPanel;
 
     private List<string> workingWords = new List<string>();
     private List<string> TutorialwordList = new List<string>()
@@ -45,6 +47,11 @@ public class CatSquidGame_WordList : MonoBehaviour
 
     void Update()
     {
+        if(WinerPanel.activeInHierarchy == true || GameOverPanel.activeInHierarchy == true)
+        {
+            GameObject.Find("Typer").GetComponent<CatSquidGame_Typer>().enabled = false;
+            GameObject.Find("Typer").GetComponent<CatSquidGameChecker>().enabled = false;
+        }
         //Debug.Log(workingWords.Count);
         //Debug.Log(workingWords.First());
     }
