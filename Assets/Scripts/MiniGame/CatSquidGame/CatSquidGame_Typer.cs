@@ -68,6 +68,7 @@ public class CatSquidGame_Typer : MonoBehaviour
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
 
+    public AddCoin addCoin;
 
     private void Awake()
     {
@@ -152,6 +153,7 @@ public class CatSquidGame_Typer : MonoBehaviour
             if (IsGameFinish == false)
             {
                 ShowDataLetter();
+                addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
             }
         }
@@ -159,7 +161,7 @@ public class CatSquidGame_Typer : MonoBehaviour
         else
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime);
 
-        TimeSpent.text = delayTimeSpan.ToString();
+        TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word :" + wordTotal.ToString();
 
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());

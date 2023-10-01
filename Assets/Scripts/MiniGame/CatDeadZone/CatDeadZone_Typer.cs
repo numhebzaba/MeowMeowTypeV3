@@ -69,6 +69,8 @@ public class CatDeadZone_Typer : MonoBehaviour
 
     public DeadZoneDetect DetectDeadZone;
 
+    public AddCoin addCoin;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -154,6 +156,7 @@ public class CatDeadZone_Typer : MonoBehaviour
             if (IsGameFinish == false)
             {
                 ShowDataLetter();
+                addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
             }
         }
@@ -161,7 +164,7 @@ public class CatDeadZone_Typer : MonoBehaviour
         else
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime);
 
-        TimeSpent.text = delayTimeSpan.ToString();
+        TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word :" + wordTotal.ToString();
 
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());

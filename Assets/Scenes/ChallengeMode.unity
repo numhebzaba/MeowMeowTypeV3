@@ -128,6 +128,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 440830, guid: ee17d9afd26027744b8c7d0cc0f25022, type: 3}
   m_PrefabInstance: {fileID: 1322937938}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &24439605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24439606}
+  - component: {fileID: 24439607}
+  m_Layer: 0
+  m_Name: AddCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &24439606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24439605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -339.81543, y: 414.91302, z: 1.6771498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1503758990}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24439607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24439605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acbf71c083ed2f428a8e43bb9459e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UserCurrency: 0
+  CoinToAdd: 5
+  dependencyStatus: 0
+  userData: {fileID: 1066490142}
 --- !u!1001 &42890732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,7 +719,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &159200604
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -688,7 +736,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &169845241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,6 +3446,7 @@ MonoBehaviour:
   allTypedEntries: 0
   unCorrectedError: 0
   wordPerMinute: 0
+  OverallAccuracy: 0
   TimeInMinute: 0
   animationStateController: {fileID: 0}
   BGanimator: {fileID: 103203093}
@@ -3410,6 +3460,9 @@ MonoBehaviour:
   CharacterDB: {fileID: 11400000, guid: 9f57d4b9807d73d498c7aebcf2c32fcb, type: 2}
   AtworkSkin: {fileID: 0}
   PlayerPosition: {fileID: 609993564}
+  addCoin: {fileID: 24439607}
+  dataManager: {fileID: 0}
+  challengeModeDataManager: {fileID: 1496937275}
 --- !u!4 &760846385
 Transform:
   m_ObjectHideFlags: 0
@@ -4837,7 +4890,7 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
-  UserName_text: {fileID: 169845243}
+  IsTestMode: 0
 --- !u!4 &1066490143
 Transform:
   m_ObjectHideFlags: 0
@@ -6825,6 +6878,11 @@ MonoBehaviour:
   IsHistoryUIActive: 0
   IsLeaderboardUIActive: 0
   showKeyboardManager: {fileID: 0}
+  UIChallenge: {fileID: 0}
+  AchievementList: []
+  _achievementNotificationcontroller: {fileID: 0}
+  _UIGameManager: {fileID: 0}
+  Currency_text: {fileID: 0}
 --- !u!114 &1496937275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6881,6 +6939,7 @@ Transform:
   m_Children:
   - {fileID: 1066490143}
   - {fileID: 1496937273}
+  - {fileID: 24439606}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

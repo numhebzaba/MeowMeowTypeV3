@@ -61,6 +61,9 @@ public class Typer : MonoBehaviour
 
     public GameObject PlayerPosition;
 
+    public AddCoin addCoin;
+    public DataManager dataManager;
+    public ChallengeModeDataManger challengeModeDataManager;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -141,7 +144,11 @@ public class Typer : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if(IsGameFinish == false)
             {
+                if(dataManager !=null)
+                    dataManager.UploadDataButton();
+                if(challengeModeDataManager)
                 ShowDataLetter();
+                addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
             }
         }

@@ -1686,6 +1686,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269609307}
   m_CullTransparentMesh: 1
+--- !u!1 &353705609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353705610}
+  - component: {fileID: 353705611}
+  m_Layer: 0
+  m_Name: AddCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353705610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353705609}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -339.81543, y: 414.91302, z: 1.6771498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1503758990}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353705611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353705609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acbf71c083ed2f428a8e43bb9459e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UserCurrency: 0
+  CoinToAdd: 10
+  dependencyStatus: 0
+  userData: {fileID: 1066490142}
 --- !u!1001 &359385635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3547,6 +3595,8 @@ MonoBehaviour:
   CharacterDB: {fileID: 11400000, guid: 9f57d4b9807d73d498c7aebcf2c32fcb, type: 2}
   AtworkSkin: {fileID: 0}
   PlayerPosition: {fileID: 609993564}
+  addCoin: {fileID: 353705611}
+  dataManager: {fileID: 1496937274}
 --- !u!4 &760846385
 Transform:
   m_ObjectHideFlags: 0
@@ -4602,7 +4652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &977827683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4974,8 +5024,6 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
-  UserName_text: {fileID: 169845243}
-  Email_text: {fileID: 121477230}
   IsTestMode: 0
 --- !u!4 &1066490143
 Transform:
@@ -6697,6 +6745,7 @@ MonoBehaviour:
   AchievementList: []
   _achievementNotificationcontroller: {fileID: 0}
   _UIGameManager: {fileID: 0}
+  Currency_text: {fileID: 0}
 --- !u!1 &1503758989
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,6 +6776,7 @@ Transform:
   m_Children:
   - {fileID: 1066490143}
   - {fileID: 1496937273}
+  - {fileID: 353705610}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

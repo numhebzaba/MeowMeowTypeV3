@@ -99,7 +99,8 @@ public class DataManager : MonoBehaviour
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
 
         //StartCoroutine(UpdateUsernameDatabase(userData.UserName));
-        StartCoroutine(UpateDatabaseCurrencyUser());
+        if(Currency_text != null)
+            StartCoroutine(UpateDatabaseCurrencyUser());
 
 
 
