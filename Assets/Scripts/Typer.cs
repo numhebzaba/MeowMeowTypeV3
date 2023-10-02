@@ -146,7 +146,8 @@ public class Typer : MonoBehaviour
             {
                 if(dataManager !=null)
                     dataManager.UploadDataButton();
-                if(challengeModeDataManager)
+                if(challengeModeDataManager != null)
+                    challengeModeDataManager.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
