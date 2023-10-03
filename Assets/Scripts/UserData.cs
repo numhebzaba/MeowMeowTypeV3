@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class UserData : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class UserData : MonoBehaviour
     public string UserEmail;
     public string UserPassword;
 
-    //public TMP_Text UserName_text;
-    //public TMP_Text Email_text;
+    public TMP_Text UserName_text;
+    public TMP_Text Email_text;
 
     public bool IsTestMode = false;
     private void Awake()
@@ -24,12 +25,12 @@ public class UserData : MonoBehaviour
             UserEmail = PlayerPrefs.GetString("UserEmail");
             UserPassword = PlayerPrefs.GetString("UserPassword");
         }
+
         
-        
-        
-            
-        
-        
+
+
+
+
 
 
         //PlayerPrefs.SetString("UserName", UserName);
@@ -40,7 +41,12 @@ public class UserData : MonoBehaviour
 
     private void Start()
     {
-        //UserName_text.text = $"{UserName.ToString()}";
+        if(UserName_text != null)
+        {
+            UserName_text.text = $"{UserName.ToString()}";
+            Email_text.text = $"{UserEmail.ToString()}";
+        }
+        
     }
 
 }
