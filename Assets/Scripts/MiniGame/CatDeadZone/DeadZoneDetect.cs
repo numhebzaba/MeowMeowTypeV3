@@ -31,6 +31,7 @@ public class DeadZoneDetect : MonoBehaviour
     public Volume volume;
     private Vignette vignette;
 
+    private bool IsDeadZoneForward;
 
     private void Start()
     {
@@ -43,14 +44,14 @@ public class DeadZoneDetect : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(DeadZoneCountDistance);
         WordPerMinute = ClassTyper.wordPerMinute;
         ReceiveWordPerMinute(WordPerMinute);
     }
 
+
     public void ReceiveWordPerMinute(int data)
     {
-        if (data != DeadZoneCountDistance)
+        if (/*data != DeadZoneCountDistance*/IsDeadZoneForward == true)
         {
             StartLerp();
         }
@@ -103,6 +104,7 @@ public class DeadZoneDetect : MonoBehaviour
 
     public void IsTrueType()
     {
+        IsDeadZoneForward = false;
         if (DeadZoneCountDistance != ClassTyper.wordPerMinute)
         {
             DeadZoneCountDistance++;
@@ -111,10 +113,16 @@ public class DeadZoneDetect : MonoBehaviour
 
     public void IsFaseType()
     {
+        IsDeadZoneForward = true;
         if (DeadZoneCountDistance > -1)
         {
             DeadZoneCountDistance--;
         }
+    }
+
+    public void IsPlayerIdel()
+    {
+        IsDeadZoneForward = true;
     }
 
     private void ScreenDamage(float value)

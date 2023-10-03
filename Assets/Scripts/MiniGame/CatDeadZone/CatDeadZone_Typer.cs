@@ -58,8 +58,8 @@ public class CatDeadZone_Typer : MonoBehaviour
 
     private int Cat_HP = 3;
 
-    private float CountWordIsTrue = 0;
-    private float CountWordIsFalse = 0;
+    public float CountWordIsTrue = 0;
+    public float CountWordIsFalse = 0;
     private double CountAccuracy;
 
     public TMP_Text SummaryAccuracyText;
@@ -70,6 +70,9 @@ public class CatDeadZone_Typer : MonoBehaviour
     public DeadZoneDetect DetectDeadZone;
 
     public AddCoin addCoin;
+
+    private float idleTime = 0f;
+    public float idleThreshold = 1.5f;
 
     private void Awake()
     {
@@ -143,7 +146,6 @@ public class CatDeadZone_Typer : MonoBehaviour
     void Update()
     {
         CheckInput();
-        Debug.Log(wordPerMinute);
         
         //SetAnimationKeyboard(currentWord);
 
@@ -198,15 +200,25 @@ public class CatDeadZone_Typer : MonoBehaviour
 
     private void CheckInput()
     {
+        if (!Input.anyKey)
+        {
+            idleTime += Time.deltaTime;
+            CheckTImeIdel();
+        }
         if (Input.anyKeyDown)
         {
+            ResetIdleTime();
             string keyPressed = Input.inputString;
 
             if (keyPressed.Length == 1)
                 EnterLetter(keyPressed);
             allTypedEntries++;
+
         }
+
     }
+
+    
 
     private void CheckLetter(string keyinput)
     {
@@ -327,6 +339,17 @@ public class CatDeadZone_Typer : MonoBehaviour
         //Keyboard.SetActive(IsKeyboardActive);
     }
 
+    private void CheckTImeIdel()
+    {
+        if(idleTime >= idleThreshold)
+        {
+            DetectDeadZone.IsPlayerIdel();
+        }
+    }
+    private void ResetIdleTime()
+    {
+        idleTime = 0;
+    }
     private void AddEngLetterlist()
     {
         DataLetterList.Add(new ListLetters("a", 0, 0, 0));

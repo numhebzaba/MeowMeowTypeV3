@@ -1510,12 +1510,15 @@ MonoBehaviour:
   CharacterDB: {fileID: 11400000, guid: 9f57d4b9807d73d498c7aebcf2c32fcb, type: 2}
   AtworkSkin: {fileID: 0}
   playerPositionSpawn: {fileID: 7801124}
+  CountWordIsTrue: 0
+  CountWordIsFalse: 0
   SummaryAccuracyText: {fileID: 181487696}
   SummaryTimeText: {fileID: 882065029}
   SummaryCorrect: {fileID: 1376676813}
   SummaryInCorrect: {fileID: 983138381}
   DetectDeadZone: {fileID: 1130604509}
   addCoin: {fileID: 1859030597}
+  idleThreshold: 2
 --- !u!1 &312004085
 GameObject:
   m_ObjectHideFlags: 0
