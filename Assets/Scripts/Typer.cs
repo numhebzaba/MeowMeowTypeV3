@@ -64,6 +64,16 @@ public class Typer : MonoBehaviour
     public AddCoin addCoin;
     public DataManager dataManager;
     public ChallengeModeDataManger challengeModeDataManager;
+
+    private float CountWordIsTrue = 0;
+    private float CountWordIsFalse = 0;
+    private double CountAccuracy;
+
+    public TMP_Text SummaryAccuracyText;
+    public TMP_Text SummaryTimeText;
+    public TMP_Text SummaryCorrect;
+    public TMP_Text SummaryInCorrect;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -144,11 +154,11 @@ public class Typer : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if(IsGameFinish == false)
             {
-                if(dataManager !=null)
+                ShowDataTyper();
+                if (dataManager !=null)
                     dataManager.UploadDataButton();
                 if(challengeModeDataManager != null)
                     challengeModeDataManager.UploadDataButton();
-                ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
             }
@@ -217,6 +227,7 @@ public class Typer : MonoBehaviour
     {
         if (IsCorrectLetter(typedLetter))
         {
+            CountWordIsTrue++;
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -242,6 +253,7 @@ public class Typer : MonoBehaviour
 
     public void IsFalse(string keyinput)
     {
+        CountWordIsFalse++;
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
@@ -284,6 +296,24 @@ public class Typer : MonoBehaviour
         Debug.Log("++++++++++++"+OverallAccuracyTemp);
         OverallAccuracy = OverallAccuracyTemp;
 
+    }
+
+    public void ShowDataTyper()
+    {
+        double TimeSeccond = Math.Round(double.Parse(delayTimeSpan.TotalSeconds.ToString()));
+        double TimeMinut = Math.Round(double.Parse(delayTimeSpan.TotalMinutes.ToString()));
+
+        CalculateAccuracy();
+        SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
+        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
+        SummaryCorrect.text = "Correct : " + CountWordIsTrue;
+        SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
+    }
+
+    private void CalculateAccuracy()
+    {
+        float AllCount = CountWordIsTrue + CountWordIsFalse;
+        CountAccuracy = Math.Round((CountWordIsTrue * 100) / AllCount);
     }
 
 
