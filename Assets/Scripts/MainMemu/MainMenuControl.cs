@@ -12,7 +12,7 @@ public class MainMenuControl : MonoBehaviour
     private void Start()
     {
         MainMenuManager.ClearScreen();
-        MainMenuManager.showUI(5);
+        MainMenuManager.showUI(6);
     }
 
     public void ShowMainMenu()
