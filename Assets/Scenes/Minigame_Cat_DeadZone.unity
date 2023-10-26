@@ -430,6 +430,8 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
+  UserName_text: {fileID: 0}
+  Email_text: {fileID: 0}
   IsTestMode: 0
 --- !u!4 &91478821
 Transform:
@@ -1499,6 +1501,7 @@ MonoBehaviour:
   allTypedEntries: 0
   unCorrectedError: 0
   wordPerMinute: 0
+  OverallAccuracy: 0
   TimeInMinute: 0
   animationStateController: {fileID: 0}
   BGanimator: {fileID: 564868097}
@@ -1519,6 +1522,7 @@ MonoBehaviour:
   DetectDeadZone: {fileID: 1130604509}
   addCoin: {fileID: 1859030597}
   idleThreshold: 2
+  datamanagerOtherMode: {fileID: 664123693}
 --- !u!1 &312004085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2380,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f445c2fc41c5e79408993850187832ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &664123692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664123694}
+  - component: {fileID: 664123693}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664123693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664123692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9aad80ef0c6933498a7900751f05ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dependencyStatus: 0
+  userData: {fileID: 91478820}
+  typer: {fileID: 0}
+  TutorialTyperPart4: {fileID: 0}
+  catDeadZone_Typer: {fileID: 287652770}
+  catSquidGame_Typer: {fileID: 0}
+  catSurvival_Typer: {fileID: 0}
+  limitTrackingLoopCalculate: 10
+  GameMode: MiniGame
+--- !u!4 &664123694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664123692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 209.56496, y: 51.822598, z: 240.60336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765317911
 GameObject:
   m_ObjectHideFlags: 0

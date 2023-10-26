@@ -74,6 +74,8 @@ public class Typer : MonoBehaviour
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
 
+    public DatamanagerOtherMode datamanagerOtherMode;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -148,6 +150,15 @@ public class Typer : MonoBehaviour
         SpeedType += TimeSpan.FromSeconds(Time.deltaTime);
         CheckInput();
 
+        int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
+        if (TimeInIntValue <= 0)
+            TimeInIntValue = 1;
+        if ((allTypedEntries / 5) <= unCorrectedError)
+            wordPerMinute = 0;
+        else
+            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
+        WordPerminuteText.text = "WPM :" + wordPerMinute.ToString();
+
         if (!wordList.IsWordLeft() && IsWordComplete())
         {
             SummaryUI.SetActive(true);
@@ -159,6 +170,9 @@ public class Typer : MonoBehaviour
                     dataManager.UploadDataButton();
                 if(challengeModeDataManager != null)
                     challengeModeDataManager.UploadDataButton();
+                if(datamanagerOtherMode != null)
+                    datamanagerOtherMode.UploadDataButton();
+
                 addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
             }
@@ -170,14 +184,7 @@ public class Typer : MonoBehaviour
         TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word :" + wordTotal.ToString();
         
-        int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
-        if (TimeInIntValue <= 0)
-            TimeInIntValue = 1;
-        if ((allTypedEntries / 5) <= unCorrectedError)
-            wordPerMinute = 0;
-        else
-            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError))/TimeInIntValue;
-        WordPerminuteText.text = "WPM :"+wordPerMinute.ToString();
+
 
 
     }
@@ -293,7 +300,6 @@ public class Typer : MonoBehaviour
 
         float OverallAccuracyTemp = (allTypedEntries - unCorrectedError) ;
         OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
-        Debug.Log("++++++++++++"+OverallAccuracyTemp);
         OverallAccuracy = OverallAccuracyTemp;
 
     }

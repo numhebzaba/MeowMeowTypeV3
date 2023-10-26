@@ -45,7 +45,7 @@ public class DataManager : MonoBehaviour
     public UIGameManager _UIGameManager;
 
     public TMP_Text Currency_text;
-
+    public int limitTrackingLoopCalculate = 10;
 
     void Awake()
     {
@@ -184,6 +184,7 @@ public class DataManager : MonoBehaviour
     }
     private IEnumerator UpdateWpm(int _Wpm, string _Date)
     {
+
         //Set the currently logged in user Wpm
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Wpm").SetValueAsync(_Wpm);
 
@@ -201,7 +202,7 @@ public class DataManager : MonoBehaviour
     private IEnumerator UpdateOverallAccuracy(float _OverallAccuracy, string _Date)
     {
         //Set the currently logged in user Wpm
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Wpm").SetValueAsync(_OverallAccuracy);
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Accuracy").SetValueAsync(_OverallAccuracy);
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -328,7 +329,7 @@ public class DataManager : MonoBehaviour
             int limitHistoryLoop = 0;
             foreach (DataSnapshot childSnapshot in snapshot1.Children.Reverse<DataSnapshot>())
             {
-                if (limitHistoryLoop == 10)
+                if (limitHistoryLoop == limitTrackingLoopCalculate)
                     break;
                 limitHistoryLoop++;
 

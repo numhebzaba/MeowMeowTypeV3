@@ -2777,6 +2777,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 440830, guid: ee17d9afd26027744b8c7d0cc0f25022, type: 3}
   m_PrefabInstance: {fileID: 1821360120}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635072519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635072521}
+  - component: {fileID: 635072520}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &635072520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635072519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9aad80ef0c6933498a7900751f05ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dependencyStatus: 0
+  userData: {fileID: 1066490142}
+  typer: {fileID: 760846384}
+  TutorialTyperPart4: {fileID: 0}
+  catDeadZone_Typer: {fileID: 0}
+  catSquidGame_Typer: {fileID: 0}
+  catSurvival_Typer: {fileID: 0}
+  limitTrackingLoopCalculate: 10
+  GameMode: Challenge
+--- !u!4 &635072521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635072519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 209.56496, y: 51.822598, z: 240.60336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &641364251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9069115365609054727, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
@@ -3946,6 +3999,7 @@ MonoBehaviour:
   SummaryTimeText: {fileID: 701358587}
   SummaryCorrect: {fileID: 961009510}
   SummaryInCorrect: {fileID: 1049950046}
+  datamanagerOtherMode: {fileID: 635072520}
 --- !u!4 &760846385
 Transform:
   m_ObjectHideFlags: 0
@@ -5644,6 +5698,8 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
+  UserName_text: {fileID: 0}
+  Email_text: {fileID: 0}
   IsTestMode: 0
 --- !u!4 &1066490143
 Transform:
@@ -8216,6 +8272,7 @@ MonoBehaviour:
   _achievementNotificationcontroller: {fileID: 0}
   _UIGameManager: {fileID: 0}
   Currency_text: {fileID: 0}
+  limitTrackingLoopCalculate: 10
 --- !u!114 &1496937275
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -70,6 +70,10 @@ public class CatSurvival_Typer : MonoBehaviour
 
     public AddCoin addCoin;
 
+    public float OverallAccuracy = 0;
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
+    public DatamanagerOtherMode datamanagerOtherMode;
+    public DateTime aDate = DateTime.Now;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -152,6 +156,7 @@ public class CatSurvival_Typer : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
+                datamanagerOtherMode.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
@@ -213,6 +218,12 @@ public class CatSurvival_Typer : MonoBehaviour
             {
                 letter.UpdateData();
                 letter.UpdateAccuracy();
+
+                UpdateOverallAccuracy();
+
+                float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
+                letter.UpdateSpeed(SpeedTypedOneLetter);
+                SpeedType = TimeSpan.Zero;
             }
         }
     }
@@ -357,5 +368,12 @@ public class CatSurvival_Typer : MonoBehaviour
         Cat_HP--;
         CatTextHP.text = Cat_HP.ToString();
     }
+    public void UpdateOverallAccuracy()
+    {
 
+        float OverallAccuracyTemp = (allTypedEntries - unCorrectedError);
+        OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
+        OverallAccuracy = OverallAccuracyTemp;
+
+    }
 }

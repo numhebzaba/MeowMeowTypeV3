@@ -28,6 +28,7 @@ public class TutorialTyperPart4 : MonoBehaviour
     public int allTypedEntries = 0;
     public int unCorrectedError = 0;
     public int wordPerMinute = 0;
+    public float OverallAccuracy = 0;
     public TimeSpan delayTimeSpan = new TimeSpan(0, 0, 0);
     public int TimeInMinute;
 
@@ -66,6 +67,11 @@ public class TutorialTyperPart4 : MonoBehaviour
     public TMP_Text SummaryTimeText;
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
+
+    public DatamanagerOtherMode datamanagerOtherMode;
+    public DateTime aDate = DateTime.Now;
+
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
 
 
     private void Awake()
@@ -149,6 +155,7 @@ public class TutorialTyperPart4 : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
+                datamanagerOtherMode.UploadDataButton();
                 SummaryPanel.SetActive(true);
                 ShowDataLetterSummary();
                 IsGameFinish = true;
@@ -203,6 +210,11 @@ public class TutorialTyperPart4 : MonoBehaviour
             {
                 letter.UpdateData();
                 letter.UpdateAccuracy();
+                UpdateOverallAccuracy();
+
+                float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
+                letter.UpdateSpeed(SpeedTypedOneLetter);
+                SpeedType = TimeSpan.Zero;
             }
         }
     }
@@ -316,5 +328,13 @@ public class TutorialTyperPart4 : MonoBehaviour
         DataLetterList.Add(new ListLetters("x", 0, 0, 0));
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
+    }
+    public void UpdateOverallAccuracy()
+    {
+
+        float OverallAccuracyTemp = (allTypedEntries - unCorrectedError);
+        OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
+        OverallAccuracy = OverallAccuracyTemp;
+
     }
 }

@@ -30,6 +30,7 @@ public class CatDeadZone_Typer : MonoBehaviour
     public int allTypedEntries = 0;
     public int unCorrectedError = 0;
     public int wordPerMinute = 0;
+    public float OverallAccuracy = 0;
     public TimeSpan delayTimeSpan = new TimeSpan(0, 0, 0);
     public int TimeInMinute;
 
@@ -74,6 +75,9 @@ public class CatDeadZone_Typer : MonoBehaviour
     private float idleTime = 0f;
     public float idleThreshold = 1.5f;
 
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
+    public DatamanagerOtherMode datamanagerOtherMode;
+    public DateTime aDate = DateTime.Now;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -157,6 +161,7 @@ public class CatDeadZone_Typer : MonoBehaviour
             delayTimeSpan = delayTimeSpan;
             if (IsGameFinish == false)
             {
+                datamanagerOtherMode.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
                 IsGameFinish = true;
@@ -228,6 +233,12 @@ public class CatDeadZone_Typer : MonoBehaviour
             {
                 letter.UpdateData();
                 letter.UpdateAccuracy();
+                UpdateOverallAccuracy();
+
+                float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
+                letter.UpdateSpeed(SpeedTypedOneLetter);
+                SpeedType = TimeSpan.Zero;
+
             }
         }
     }
@@ -384,5 +395,12 @@ public class CatDeadZone_Typer : MonoBehaviour
     {
         Cat_HP--;
     }
+    public void UpdateOverallAccuracy()
+    {
 
+        float OverallAccuracyTemp = (allTypedEntries - unCorrectedError);
+        OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
+        OverallAccuracy = OverallAccuracyTemp;
+
+    }
 }
