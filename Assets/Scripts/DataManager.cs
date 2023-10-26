@@ -523,7 +523,7 @@ public class DataManager : MonoBehaviour
 
         } else
             HistoryUI.SetActive(false);
-
+        LoadAccAndSpeedButton();
     }
     private IEnumerator LoadHistoryData()
     {

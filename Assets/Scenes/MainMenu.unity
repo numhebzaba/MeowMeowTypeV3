@@ -6475,6 +6475,8 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
+  UserName_text: {fileID: 626502756}
+  Email_text: {fileID: 138891717}
   IsTestMode: 0
 --- !u!4 &453952145
 Transform:
@@ -23440,7 +23442,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 769892790}
   m_HandleRect: {fileID: 769892789}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
