@@ -24,4 +24,8 @@ public class SwitchScene : MonoBehaviour
     {
         SceneManager.LoadScene("ChallengeMode");
     }
+    public void GamePlayRank()
+    {
+        SceneManager.LoadScene("GamePlay");
+    }
 }

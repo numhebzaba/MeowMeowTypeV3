@@ -5748,7 +5748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 857326349}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -5915,6 +5915,8 @@ MonoBehaviour:
   UserName: 
   UserEmail: 
   UserPassword: 
+  UserName_text: {fileID: 0}
+  Email_text: {fileID: 0}
   IsTestMode: 0
 --- !u!4 &1066490143
 Transform:
@@ -10845,9 +10847,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CatSquidGameChecker, Assembly-CSharp
-        m_MethodName: RestartCatSquidGame
+      - m_Target: {fileID: 857326349}
+        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
+        m_MethodName: GamePlayRank
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
