@@ -152,6 +152,7 @@ public class DataManager : MonoBehaviour
         StartCoroutine(UpdateWpm(_Wpm, Date_StringValue));
         StartCoroutine(UpdateOverallAccuracy(_OverallAccuracy, Date_StringValue));
         StartCoroutine(UpdateTime(_Time, Date_StringValue));
+        StartCoroutine(UpdateModeRank( Date_StringValue));
 
 
         foreach (var item in typer.DataLetterList)
@@ -217,6 +218,22 @@ public class DataManager : MonoBehaviour
     {
         //Set the currently logged in user Time
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Time").SetValueAsync(_Time);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Time is now updated
+        }
+    }
+    private IEnumerator UpdateModeRank( string _Date)
+    {
+        //Set the currently logged in user Time
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("HistoryPlay").Child(_Date).Child("Mode").SetValueAsync("Rank");
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -554,10 +571,11 @@ public class DataManager : MonoBehaviour
                 int Wpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
                 string Time = childSnapshot.Child("Time").Value.ToString();
                 string Date = childSnapshot.Child("Date").Value.ToString();
+                string Mode = childSnapshot.Child("Mode").Value.ToString();
 
                 //Instantiate new scoreboard elements
                 GameObject scoreboardElement = Instantiate(scoreElement, historyContent);
-                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date,Mode);
             }
 
         }
@@ -604,10 +622,11 @@ public class DataManager : MonoBehaviour
                 int Wpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
                 string Time = childSnapshot.Child("Time").Value.ToString();
                 string Date = childSnapshot.Child("Date").Value.ToString();
+                string Mode = "Rank";
                 Debug.Log(username + " : " + Wpm);
                 //Instantiate new scoreboard elements
                 GameObject scoreboardElement = Instantiate(scoreElement, leaderboardContent);
-                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date, Mode);
             }
 
         }

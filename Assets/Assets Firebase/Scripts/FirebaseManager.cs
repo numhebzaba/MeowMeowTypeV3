@@ -406,7 +406,7 @@ public class FirebaseManager : MonoBehaviour
 
                 //Instantiate new scoreboard elements
                 GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
-                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date);
+                //scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, Wpm, Time, Date,Mode);
             }
 
             //Go to scoareboard screen
