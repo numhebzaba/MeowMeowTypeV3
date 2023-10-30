@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c852b7cfe48e6ce4ca7f7c2bad170fd5, type: 3}
   m_Name: DataVolume
   m_EditorClassIdentifier: 
-  BgVolume: 0.47696516
-  FxVolume: 0
+  BgVolume: 0.5
+  FxVolume: 0.5
