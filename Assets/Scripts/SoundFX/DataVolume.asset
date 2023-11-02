@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BgVolume: 0.5
   FxVolume: 0.5
+  KeyboardFxVolume: 0.5

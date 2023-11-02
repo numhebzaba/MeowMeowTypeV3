@@ -7,6 +7,7 @@ public class DataVolumeOS : ScriptableObject
 {
     [SerializeField] private float BgVolume;
     [SerializeField] private float FxVolume;
+    [SerializeField] private float KeyboardFxVolume;
 
     public void ChanegBgVolume(float volume)
     {
@@ -18,6 +19,11 @@ public class DataVolumeOS : ScriptableObject
         FxVolume = volume;
     }
 
+    public void ChangeKeyboardFxVolume(float volume)
+    {
+        KeyboardFxVolume = volume;
+    }
+
     public float GetBgVolume()
     {
         return BgVolume;
@@ -27,6 +33,11 @@ public class DataVolumeOS : ScriptableObject
     {
         return FxVolume;
 
+    }
+
+    public float GetKeyboardFxVolume()
+    {
+        return KeyboardFxVolume;
     }
 
 }

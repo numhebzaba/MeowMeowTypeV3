@@ -67,6 +67,8 @@ public class TutorialTyperPart3 : MonoBehaviour
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
 
+    [SerializeField] SondFxkeyboardManager KeybaordAudio;
+
 
     private void Awake()
     {
@@ -217,6 +219,7 @@ public class TutorialTyperPart3 : MonoBehaviour
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
+            KeybaordAudio.PlyerAudioKeyboardIsTrue();
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -242,6 +245,7 @@ public class TutorialTyperPart3 : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         CountWordIsFalse++;
+        KeybaordAudio.PlyerAudioKeyboardIsFalse();
         BGanimator.speed = 0; //Pause background animation//
        //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);

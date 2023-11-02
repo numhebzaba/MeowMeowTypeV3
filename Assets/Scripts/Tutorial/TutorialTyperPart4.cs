@@ -73,6 +73,8 @@ public class TutorialTyperPart4 : MonoBehaviour
 
     public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
 
+    [SerializeField] SondFxkeyboardManager KeyboardAudio;
+
 
     private void Awake()
     {
@@ -227,6 +229,7 @@ public class TutorialTyperPart4 : MonoBehaviour
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
+            KeyboardAudio.PlyerAudioKeyboardIsTrue();
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -252,6 +255,7 @@ public class TutorialTyperPart4 : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         CountWordIsFalse++;
+        KeyboardAudio.PlyerAudioKeyboardIsFalse();
         BGanimator.speed = 0; //Pause background animation//
        //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);
