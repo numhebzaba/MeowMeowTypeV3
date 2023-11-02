@@ -2941,9 +2941,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1837160503}
-        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
-        m_MethodName: MainMenu
+      - m_Target: {fileID: 343343417}
+        m_TargetAssemblyTypeName: ButtonSoundFXManager, Assembly-CSharp
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2953,9 +2953,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 343343417}
-        m_TargetAssemblyTypeName: ButtonSoundFXManager, Assembly-CSharp
-        m_MethodName: OnClickButton
+      - m_Target: {fileID: 1837160503}
+        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6172,9 +6172,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1837160503}
-        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
-        m_MethodName: MainMenu
+      - m_Target: {fileID: 343343417}
+        m_TargetAssemblyTypeName: ButtonSoundFXManager, Assembly-CSharp
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6184,9 +6184,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 343343417}
-        m_TargetAssemblyTypeName: ButtonSoundFXManager, Assembly-CSharp
-        m_MethodName: OnClickButton
+      - m_Target: {fileID: 1837160503}
+        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
