@@ -147,7 +147,10 @@ public class TutorialTyperPart4 : MonoBehaviour
     }
     void Update()
     {
-        CheckInput();
+        if (!IsGameFinish)
+        {
+            CheckInput();
+        }
 
         if (!wordList.IsWordLeft() && IsWordComplete())
         {

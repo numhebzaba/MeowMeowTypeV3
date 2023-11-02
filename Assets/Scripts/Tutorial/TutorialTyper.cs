@@ -139,9 +139,11 @@ public class TutorialTyper : MonoBehaviour
     }
     void Update()
     {
-       
-        CheckInput();
-        SetAnimationKeyboard(currentWord);
+        if (!IsGameFinish)
+        {
+            CheckInput();
+            SetAnimationKeyboard(currentWord);
+        }
 
         if (!wordList.IsWordLeft() && IsWordComplete())
         {

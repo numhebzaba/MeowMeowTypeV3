@@ -67,7 +67,6 @@ public class TutorialTyperPart2 : MonoBehaviour
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
 
-
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -141,8 +140,12 @@ public class TutorialTyperPart2 : MonoBehaviour
     }
     void Update()
     {
-        CheckInput();
-        SetAnimationKeyboard(currentWord);
+        if (!IsGameFinish)
+        {
+            CheckInput();
+            SetAnimationKeyboard(currentWord);
+        }
+        
 
         if (!wordList.IsWordLeft() && IsWordComplete())
         {
