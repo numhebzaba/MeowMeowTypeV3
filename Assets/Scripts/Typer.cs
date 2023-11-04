@@ -76,6 +76,8 @@ public class Typer : MonoBehaviour
 
     public DatamanagerOtherMode datamanagerOtherMode;
 
+    [SerializeField] SondFxkeyboardManager KeyboardAudio;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -235,6 +237,7 @@ public class Typer : MonoBehaviour
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
+            KeyboardAudio.PlyerAudioKeyboardIsTrue();
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -261,6 +264,7 @@ public class Typer : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         CountWordIsFalse++;
+        KeyboardAudio.PlyerAudioKeyboardIsFalse();
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);

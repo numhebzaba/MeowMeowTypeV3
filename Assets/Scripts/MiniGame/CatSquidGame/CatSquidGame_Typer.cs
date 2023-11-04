@@ -74,6 +74,8 @@ public class CatSquidGame_Typer : MonoBehaviour
     public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
     public DatamanagerOtherMode datamanagerOtherMode;
     public DateTime aDate = DateTime.Now;
+
+    [SerializeField] SondFxkeyboardManager KeyBoardAudio;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -234,6 +236,7 @@ public class CatSquidGame_Typer : MonoBehaviour
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
+            KeyBoardAudio.PlyerAudioKeyboardIsTrue();
 
             //loopBg_1.IsMove = true;
             //loopBg_2.IsMove = true;
@@ -264,6 +267,8 @@ public class CatSquidGame_Typer : MonoBehaviour
     {
         //BGanimator.speed = 0;
         CountWordIsFalse++;
+        KeyBoardAudio.PlyerAudioKeyboardIsFalse();
+
 
         Debug.Log("Speed Down");
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);

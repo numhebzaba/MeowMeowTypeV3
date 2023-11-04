@@ -74,6 +74,8 @@ public class CatSurvival_Typer : MonoBehaviour
     public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
     public DatamanagerOtherMode datamanagerOtherMode;
     public DateTime aDate = DateTime.Now;
+
+    [SerializeField] SondFxkeyboardManager KeyboardAudio;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -233,6 +235,7 @@ public class CatSurvival_Typer : MonoBehaviour
         if (IsCorrectLetter(typedLetter))
         {
             CountWordIsTrue++;
+            KeyboardAudio.PlyerAudioKeyboardIsTrue();
 
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
@@ -259,6 +262,7 @@ public class CatSurvival_Typer : MonoBehaviour
     public void IsFalse(string keyinput)
     {
         CountWordIsFalse++;
+        KeyboardAudio.PlyerAudioKeyboardIsFalse();
 
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);

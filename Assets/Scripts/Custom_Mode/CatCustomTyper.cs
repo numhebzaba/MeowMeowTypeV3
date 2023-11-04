@@ -55,6 +55,8 @@ public class CatCustomTyper : MonoBehaviour
 
     public GameObject playerPositionSpawn;
     private GameObject animControllerObject;
+
+    [SerializeField] SondFxkeyboardManager KeyboardAudio;
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -196,6 +198,7 @@ public class CatCustomTyper : MonoBehaviour
     {
         if (IsCorrectLetter(typedLetter))
         {
+            KeyboardAudio.PlyerAudioKeyboardIsTrue();
             loopBg_1.IsMove = true;
             loopBg_2.IsMove = true;
             loopBg_3.IsMove = true;
@@ -220,6 +223,7 @@ public class CatCustomTyper : MonoBehaviour
 
     public void IsFalse(string keyinput)
     {
+        KeyboardAudio.PlyerAudioKeyboardIsFalse();
         BGanimator.speed = 0; //Pause background animation//
         //animationStateController.animator.SetBool(animationStateController.isSittingHash, true);
         animationStateController.animator.SetInteger(animationStateController.AnimationHash, 14);

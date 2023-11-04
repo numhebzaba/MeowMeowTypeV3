@@ -28,4 +28,9 @@ public class SwitchScene : MonoBehaviour
     {
         SceneManager.LoadScene("GamePlay");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
