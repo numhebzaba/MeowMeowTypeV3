@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using UnityEditor.Animations;
 
 public class CatCustomTyper : MonoBehaviour
 {
