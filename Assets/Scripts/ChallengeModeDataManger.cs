@@ -7,6 +7,7 @@ using Firebase.Database;
 using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using OpenCover.Framework.Model;
 
 public class ChallengeModeDataManger : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class ChallengeModeDataManger : MonoBehaviour
     public TMP_Text challenge_level;
     public bool IfChecker = false;
 
+    public AddCoin addCoin;
+    public GameObject GameOverUI;
+    public GameObject SummaryUI;
+
 
     void Awake()
     {
@@ -72,7 +77,8 @@ public class ChallengeModeDataManger : MonoBehaviour
     {
         StartCoroutine(Login(userData.UserEmail, userData.UserPassword));
         challenge_level.text = $"Level : {level}";
-        Debug.Log(level);
+        GameOverUI.SetActive(false);
+        SummaryUI.SetActive(false);
 
 
     }
@@ -121,11 +127,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if(typer.wordPerMinute >=25 && typer.OverallAccuracy >= 50)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
-                    }else
-                        challenge_level.text = "fail";
+                    }
+                    else
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -133,12 +141,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 30 && typer.OverallAccuracy >= 60)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -146,12 +155,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 35 && typer.OverallAccuracy >= 70)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -159,12 +169,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 40 && typer.OverallAccuracy >= 80)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -172,12 +183,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 45 && typer.OverallAccuracy >= 90)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -185,12 +197,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 50 && typer.OverallAccuracy >= 92)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -198,12 +211,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 60 && typer.OverallAccuracy >= 94)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -211,12 +225,14 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 70 && typer.OverallAccuracy >= 96)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
+
 
                     break;
                 }
@@ -224,12 +240,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 80 && typer.OverallAccuracy >= 98)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }
@@ -237,12 +254,13 @@ public class ChallengeModeDataManger : MonoBehaviour
                 {
                     if (typer.wordPerMinute >= 100 && typer.OverallAccuracy >= 99)
                     {
+                        SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
-                        challenge_level.text = "complete";
+                        addCoin.AddCoinWhenFinish();
 
                     }
                     else
-                        challenge_level.text = "fail";
+                        GameOverUI.SetActive(true);
 
                     break;
                 }

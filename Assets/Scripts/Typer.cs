@@ -73,10 +73,13 @@ public class Typer : MonoBehaviour
     public TMP_Text SummaryTimeText;
     public TMP_Text SummaryCorrect;
     public TMP_Text SummaryInCorrect;
+    public TMP_Text SummaryWordPerminuteText = null;
 
     public DatamanagerOtherMode datamanagerOtherMode;
 
     [SerializeField] SondFxkeyboardManager KeyboardAudio;
+
+    private bool canDoAction = true;
 
     private void Awake()
     {
@@ -158,24 +161,28 @@ public class Typer : MonoBehaviour
         if ((allTypedEntries / 5) <= unCorrectedError)
             wordPerMinute = 0;
         else
-            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
-        WordPerminuteText.text = "WPM :" + wordPerMinute.ToString();
-
-        if (!wordList.IsWordLeft() && IsWordComplete())
         {
-            SummaryUI.SetActive(true);
+            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
+
+        }
+
+        if (!wordList.IsWordLeft() && IsWordComplete() )
+        {
             delayTimeSpan = delayTimeSpan;
             if(IsGameFinish == false)
             {
                 ShowDataTyper();
-                if (dataManager !=null)
+                if (dataManager != null)
+                {
+                    SummaryUI.SetActive(true);
                     dataManager.UploadDataButton();
-                if(challengeModeDataManager != null)
+
+                }
+                if (challengeModeDataManager != null)
                     challengeModeDataManager.UploadDataButton();
                 if(datamanagerOtherMode != null)
                     datamanagerOtherMode.UploadDataButton();
-
-                addCoin.AddCoinWhenFinish();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -184,8 +191,9 @@ public class Typer : MonoBehaviour
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime); 
 
         TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
-        wordTotalUI.text = "word :" + wordTotal.ToString();
-        
+        wordTotalUI.text = " WordTotal : " + wordTotal.ToString();
+        WordPerminuteText.text = " WPM : " + wordPerMinute.ToString();
+
 
 
 
@@ -203,7 +211,7 @@ public class Typer : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true)
         {
             string keyPressed = Input.inputString;
 
@@ -318,6 +326,7 @@ public class Typer : MonoBehaviour
         SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
+        SummaryWordPerminuteText.text = " WPM : " + wordPerMinute.ToString();
     }
 
     private void CalculateAccuracy()
