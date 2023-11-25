@@ -78,9 +78,9 @@ public class CatSquidGameChecker : MonoBehaviour
         if (IsgameOver == false)
         {
             CheckOnStartGame();
-            AnimationEnemyControllerState();
             ChangScreenColor();
             IsRedState();
+            AnimationEnemyControllerState();
 
             if (TimeToChange == 0 && IsGameStart == true && IsTyper == true)
             {

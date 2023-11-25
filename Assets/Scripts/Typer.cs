@@ -318,12 +318,9 @@ public class Typer : MonoBehaviour
 
     public void ShowDataTyper()
     {
-        double TimeSeccond = Math.Round(double.Parse(delayTimeSpan.TotalSeconds.ToString()));
-        double TimeMinut = Math.Round(double.Parse(delayTimeSpan.TotalMinutes.ToString()));
-
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
-        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
+        SummaryTimeText.text ="Time : " + delayTimeSpan.ToString(@"hh\:mm\:ss");
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
         SummaryWordPerminuteText.text = " WPM : " + wordPerMinute.ToString();

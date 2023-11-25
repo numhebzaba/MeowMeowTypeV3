@@ -8,8 +8,8 @@ public class WordList : MonoBehaviour
     private List<string> wordList = new List<string>()
     {
         "Test","Word","DdDAa","Cat","Meow" ,"Zip","Steam","Stain","Uninterested","Uneven"
-        //,"Trot","Charge","Young","Synonymous","Eminent","Stereotyped","Lunch","Daily","Wilderness"
-        //,"Yard","Dance","Deep","Allow","Lace","Colossal","Boiling","Porter","Like","Fire","Tough"
+        ,"Trot","Charge","Young","Synonymous","Eminent","Stereotyped","Lunch","Daily","Wilderness"
+        ,"Yard","Dance","Deep","Allow","Lace","Colossal","Boiling","Porter","Like","Fire","Tough"
         //,"Dull","Kick","Stitch","Press","Houses","Look","Overt","Little","Step","Invite"
         //,"Courageous","Murky","Invent","Clover","Arrive","Whistle","Guard","Troubled","Easy"
         //,"Momentous","Sneeze","Serious","Abashed","Heavy","General","Cent","Slip","Opposite"
