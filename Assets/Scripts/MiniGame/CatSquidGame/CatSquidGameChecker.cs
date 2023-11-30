@@ -133,6 +133,10 @@ public class CatSquidGameChecker : MonoBehaviour
         if (volumeProfile.TryGet<Vignette>(out vignette) && IsTyper == false && WarningColor == true)
         {
             vignette.color.Override(new Color(195f, 40f, 55f, 1f));
+            if (IsTyper == false && WarningColor == true)
+            {
+                CheckAnyInput();
+            }
         }
         else if(IsTyper == true && WarningColor == false)
         {
@@ -243,10 +247,7 @@ public class CatSquidGameChecker : MonoBehaviour
 
     private void IsTyperState()
     {
-        if (IsTyper == false && WarningColor == true)
-        {
-            CheckAnyInput();
-        }
+        
         if (IsgameOver == false)
         {
             ChangeAnimationPlayer();
