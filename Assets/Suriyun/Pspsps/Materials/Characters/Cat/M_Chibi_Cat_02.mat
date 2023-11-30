@@ -21,22 +21,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Chibi_Cat_02
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3bb35f7f86ffc45c2aa6fc4291f787fc, type: 3}
   m_ValidKeywords:
-  - _NORMALMAP
-  m_InvalidKeywords:
-  - _EMISSIVE_SIMPLE
-  - _IS_ANGELRING_OFF
-  - _IS_CLIPPING_OFF
-  - _IS_OUTLINE_CLIPPING_NO
-  - _OUTLINE_NML
+  - _SHADING_STYLE_SKIN_AND_TEXTILES
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
     IgnoreProjection: False
-    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -263,6 +257,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_2A455339: 0.5
+    - Vector1_5A9E5888: 0
+    - Vector1_CD9CB9E8: 0.1
+    - Vector1_F5DCAAE8: 0.5
     - _1st2nd_Shades_Feather: 0.1
     - _1st_ShadeColor_Feather: 0.2
     - _1st_ShadeColor_Step: 0.7
@@ -276,6 +274,7 @@ Material:
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _Add_Antipodean_RimLight: 0
+    - _AdditionalLightCutoffPoint: 0.8
     - _AlbedoAffectEmissive: 0
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
@@ -359,6 +358,7 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _EnvironmentReflections: 1
+    - _ExtraBandThickness: 0.3
     - _Farthest_Distance: 100
     - _FirstShadeOverridden: 0
     - _FirstShadeVisible: 1
@@ -434,12 +434,16 @@ Material:
     - _OutlineOverridden: 0
     - _OutlineVisible: 1
     - _Outline_Width: 2
+    - _OverallBrightness: 0.75
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
+    - _PaintbrushStrokesAngle: 0
+    - _PaintbrushStrokesSize: 8.5
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ReceivesSSR: 1
@@ -453,6 +457,7 @@ Material:
     - _Rotate_EmissiveUV: 0
     - _Rotate_MatCapUV: 0
     - _Rotate_NormalMapForMatCapUV: 0
+    - _SHADING_STYLE: 0
     - _SPRDefaultUnlitColorMask: 15
     - _SRPDefaultUnlitColMode: 1
     - _SSRefractionProjectionModel: 0
@@ -463,8 +468,9 @@ Material:
     - _SecondShadeVisible: 1
     - _Set_SystemShadowsToBase: 1
     - _ShadeColor_Step: 0
+    - _ShadowsFloor: 0.5
     - _Shininess: 0
-    - _Smoothness: 0
+    - _Smoothness: 1
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessSource: 0
@@ -473,6 +479,7 @@ Material:
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 1
+    - _SpecularNoiseSize: 1
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilComp: 0
@@ -491,6 +498,7 @@ Material:
     - _StencilWriteMaskGBuffer: 3
     - _StencilWriteMaskMV: 128
     - _StepOffset: 0
+    - _StrongRimStrength: 0
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _Surface: 0
@@ -499,6 +507,7 @@ Material:
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
     - _ThicknessMultiplier: 1
+    - _ToonCutoffPoint: 0.2
     - _TransmissionEnable: 1
     - _TransmissionMask: 1
     - _TransparentBackfaceEnable: 0
@@ -526,6 +535,7 @@ Material:
     - _Unlit_Intensity: 1
     - _UseAoMap: 0
     - _UseColorMap: 1
+    - _UseEmission: 0
     - _UseEmissiveIntensity: 0
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 0
@@ -549,6 +559,7 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 4
     m_Colors:
+    - Color_FA669E8D: {r: 0, g: 0, b: 0, a: 0}
     - _1st_ShadeColor: {r: 0.9056604, g: 0.75903726, b: 0.7134211, a: 1}
     - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}

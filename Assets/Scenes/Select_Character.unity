@@ -629,10 +629,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 3643715848645779307, guid: b4fc71ddd6a39e142926411a5f8147de, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 7237628296572421393, guid: b4fc71ddd6a39e142926411a5f8147de, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1413,7 +1409,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1471,14 +1467,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203844586}
-  m_LocalRotation: {x: 0.7170936, y: -0.1734005, z: 0.1921446, w: 0.64713955}
+  m_LocalRotation: {x: 0.8181249, y: 0.02137584, z: 0.014332248, w: 0.57446444}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 95.871, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 110.05701, y: -8.046997, z: -8.627014}
 --- !u!1001 &229963493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2244,10 +2240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chibi_Cat_01
       objectReference: {fileID: 0}
-    - target: {fileID: 8556858493818309525, guid: 12348fc04884c514184365cc4df792af, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12348fc04884c514184365cc4df792af, type: 3}
 --- !u!1 &336933335 stripped
@@ -9408,17 +9400,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 2886068241463164568, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 8477643386457636440, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
       propertyPath: m_Name
       value: Chibi_Cat_00
-      objectReference: {fileID: 0}
-    - target: {fileID: 8477643386457636440, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9146092942837900514, guid: ca7723b78d9cb3f4591d1de36bfaa445, type: 3}
       propertyPath: m_RootOrder
@@ -9764,10 +9748,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chibi_Cat_08
       objectReference: {fileID: 0}
-    - target: {fileID: 8371733109833032439, guid: 3acf5afc1f4c12347b6b848fb484e41a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3acf5afc1f4c12347b6b848fb484e41a, type: 3}
 --- !u!1 &1294484744 stripped
@@ -10766,10 +10746,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 174877735877222132, guid: 6bcde8da7d11c3145b1ffa422536ddff, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 6092638619353990286, guid: 6bcde8da7d11c3145b1ffa422536ddff, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -13234,10 +13210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 1358269858148126017, guid: 720e20d598733f74699ef0e5413891c8, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 4916145090935117627, guid: 720e20d598733f74699ef0e5413891c8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -13502,10 +13474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 1178138926497943439, guid: baa36186587bd9d4ab769976bbfb187e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 5096310921358579189, guid: baa36186587bd9d4ab769976bbfb187e, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -13573,10 +13541,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 776109961560853127, guid: 2a1777b46cb191d409ae3f72d74cea05, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 6300174817881983559, guid: 2a1777b46cb191d409ae3f72d74cea05, type: 3}
       propertyPath: m_Name
       value: Chibi_Cat_07
@@ -14520,10 +14484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 4086740145683042126, guid: 82f864f3c3980f54884017918a66727e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 7285972052203900814, guid: 82f864f3c3980f54884017918a66727e, type: 3}
       propertyPath: m_Name
       value: Chibi_Cat_04
@@ -14779,10 +14739,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878233346}
     m_Modifications:
-    - target: {fileID: 3287463882105018349, guid: 824cb3d3a8a9e6b489447271ad157fad, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8dd566a99c4e7d74ba1ca826f54d1b9c, type: 2}
     - target: {fileID: 8085252723492411181, guid: 824cb3d3a8a9e6b489447271ad157fad, type: 3}
       propertyPath: m_Name
       value: Chibi_Cat_02
