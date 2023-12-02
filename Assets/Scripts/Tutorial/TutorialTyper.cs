@@ -283,7 +283,7 @@ public class TutorialTyper : MonoBehaviour
 
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
-        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond;
+        SummaryTimeText.text = "Time : " + delayTimeSpan.ToString(@"hh\:mm\:ss");
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
     }
