@@ -79,6 +79,9 @@ public class CatDeadZone_Typer : MonoBehaviour
     public DateTime aDate = DateTime.Now;
 
     [SerializeField] SondFxkeyboardManager KeyboardAudio;
+
+    private bool canDoAction = true;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -165,6 +168,7 @@ public class CatDeadZone_Typer : MonoBehaviour
                 datamanagerOtherMode.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -209,9 +213,10 @@ public class CatDeadZone_Typer : MonoBehaviour
         if (!Input.anyKey)
         {
             idleTime += Time.deltaTime;
-            CheckTImeIdel();
+            CheckTImeIdle();
         }
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             ResetIdleTime();
             string keyPressed = Input.inputString;
@@ -354,7 +359,7 @@ public class CatDeadZone_Typer : MonoBehaviour
         //Keyboard.SetActive(IsKeyboardActive);
     }
 
-    private void CheckTImeIdel()
+    private void CheckTImeIdle()
     {
         if(idleTime >= idleThreshold)
         {

@@ -211,7 +211,8 @@ public class Typer : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown && canDoAction == true)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 

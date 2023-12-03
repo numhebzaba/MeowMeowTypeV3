@@ -75,6 +75,9 @@ public class CatSurvival_Typer : MonoBehaviour
     public DateTime aDate = DateTime.Now;
 
     [SerializeField] SondFxkeyboardManager KeyboardAudio;
+
+    private bool canDoAction = true;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -160,6 +163,7 @@ public class CatSurvival_Typer : MonoBehaviour
                 datamanagerOtherMode.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -188,7 +192,7 @@ public class CatSurvival_Typer : MonoBehaviour
 
         CalculateAccuracy();
         SummaryAccuracyText.text = "Accuracy : " + CountAccuracy + " %";
-        SummaryTimeText.text = "Time : " + TimeMinut + ":" + TimeSeccond ;
+        SummaryTimeText.text = "Time : "+delayTimeSpan.ToString(@"hh\:mm\:ss");
         SummaryCorrect.text = "Correct : " + CountWordIsTrue;
         SummaryInCorrect.text = "Incorrect : " + CountWordIsFalse;
     }
@@ -201,7 +205,8 @@ public class CatSurvival_Typer : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 
