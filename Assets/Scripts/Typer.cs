@@ -154,16 +154,17 @@ public class Typer : MonoBehaviour
     {
         SpeedType += TimeSpan.FromSeconds(Time.deltaTime);
         CheckInput();
+        
+        int TimeInFloatValue = int.Parse(delayTimeSpan.Seconds.ToString());
+        Debug.Log(allTypedEntries);
 
-        int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
-        if (TimeInIntValue <= 0)
-            TimeInIntValue = 1;
+        if (TimeInFloatValue <= 60)
+            TimeInFloatValue = 60;
         if ((allTypedEntries / 5) <= unCorrectedError)
             wordPerMinute = 0;
         else
         {
-            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
-
+            wordPerMinute = ((((allTypedEntries / 5) - unCorrectedError)) / (TimeInFloatValue));
         }
 
         if (!wordList.IsWordLeft() && IsWordComplete() )

@@ -1988,6 +1988,7 @@ MonoBehaviour:
   CountDownTime: {fileID: 70957620}
   WinerPanel: {fileID: 150870261}
   GameOverPanel: {fileID: 1403451505}
+  LimitWord: 30
   CustomTyper: {fileID: 287652768}
 --- !u!1 &483370606
 GameObject:

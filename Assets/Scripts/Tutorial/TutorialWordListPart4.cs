@@ -38,6 +38,7 @@ public class TutorialWordListPart4 : MonoBehaviour
     private void Awake()
     {
         workingWords.AddRange(TutorialwordList);
+        shuffle(workingWords);
         //shuffle(workingWords);
         //ConvertToLower(workingWords);
 

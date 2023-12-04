@@ -1953,6 +1953,7 @@ MonoBehaviour:
   CoundownPanel: {fileID: 512430655}
   TyperPanel: {fileID: 765317911}
   CountDownTime: {fileID: 70957620}
+  LimitWord: 30
   CustomTyper: {fileID: 287652770}
 --- !u!1 &483370606
 GameObject:
