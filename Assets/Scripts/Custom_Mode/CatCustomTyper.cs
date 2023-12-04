@@ -144,8 +144,8 @@ public class CatCustomTyper : MonoBehaviour
         else
             delayTimeSpan += TimeSpan.FromSeconds(Time.deltaTime);
 
-        TimeSpent.text = delayTimeSpan.ToString();
-        wordTotalUI.text = "word :" + wordTotal.ToString();
+        TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
+        wordTotalUI.text = "word : " + wordTotal.ToString();
 
         int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
         if (TimeInIntValue <= 0)
@@ -171,7 +171,8 @@ public class CatCustomTyper : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 

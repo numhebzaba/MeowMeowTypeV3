@@ -75,6 +75,9 @@ public class CatSquidGame_Typer : MonoBehaviour
     public DateTime aDate = DateTime.Now;
 
     [SerializeField] SondFxkeyboardManager KeyBoardAudio;
+
+    private bool canDoAction = true;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -160,6 +163,7 @@ public class CatSquidGame_Typer : MonoBehaviour
                 datamanagerOtherMode.UploadDataButton();
                 ShowDataLetter();
                 addCoin.AddCoinWhenFinish();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -201,7 +205,8 @@ public class CatSquidGame_Typer : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 

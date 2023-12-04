@@ -69,6 +69,7 @@ public class TutorialTyperPart3 : MonoBehaviour
 
     [SerializeField] SondFxkeyboardManager KeybaordAudio;
 
+    private bool canDoAction = true;
 
     private void Awake()
     {
@@ -158,6 +159,7 @@ public class TutorialTyperPart3 : MonoBehaviour
             {
                 SummaryPanel.SetActive(true);
                 ShowDataLetterSummary();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -192,7 +194,8 @@ public class TutorialTyperPart3 : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 

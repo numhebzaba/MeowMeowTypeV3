@@ -68,6 +68,9 @@ public class TutorialTyperPart2 : MonoBehaviour
     public TMP_Text SummaryInCorrect;
 
     [SerializeField] SondFxkeyboardManager KeyboardFx;
+
+    private bool canDoAction = true;
+
     private void Awake()
     {
         loopBg_1 = loopBgArray_1.GetComponent<LoopBg>();
@@ -155,6 +158,7 @@ public class TutorialTyperPart2 : MonoBehaviour
             {
                 SummaryPanel.SetActive(true);
                 ShowDataLetterSummary();
+                canDoAction = false;
                 IsGameFinish = true;
             }
         }
@@ -189,7 +193,8 @@ public class TutorialTyperPart2 : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canDoAction == true && !(Input.GetMouseButtonDown(0)
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             string keyPressed = Input.inputString;
 
