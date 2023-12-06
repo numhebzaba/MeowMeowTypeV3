@@ -7,7 +7,6 @@ using Firebase.Database;
 using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using OpenCover.Framework.Model;
 
 public class ChallengeModeDataManger : MonoBehaviour
 {
