@@ -45,7 +45,7 @@ public class DataManager : MonoBehaviour
     public UIGameManager _UIGameManager;
 
     public TMP_Text Currency_text;
-    public int limitTrackingLoopCalculate = 10;
+    public int limitTrackingLoopCalculate = 20;
 
     void Awake()
     {
@@ -94,7 +94,7 @@ public class DataManager : MonoBehaviour
 
         User = LoginTask.Result;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
 

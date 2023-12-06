@@ -24,7 +24,7 @@ public class DatamanagerOtherMode : MonoBehaviour
     public CatSquidGame_Typer catSquidGame_Typer;
     public CatSurvival_Typer catSurvival_Typer;
 
-    public int limitTrackingLoopCalculate = 10;
+    public int limitTrackingLoopCalculate = 20;
 
     public string GameMode = "";
 
@@ -71,7 +71,7 @@ public class DatamanagerOtherMode : MonoBehaviour
 
         User = LoginTask.Result;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
 
