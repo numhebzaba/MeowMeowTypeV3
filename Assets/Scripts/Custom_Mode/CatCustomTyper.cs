@@ -147,13 +147,13 @@ public class CatCustomTyper : MonoBehaviour
         TimeSpent.text = delayTimeSpan.ToString(@"hh\:mm\:ss");
         wordTotalUI.text = "word : " + wordTotal.ToString();
 
-        int TimeInIntValue = int.Parse(delayTimeSpan.Minutes.ToString());
-        if (TimeInIntValue <= 0)
-            TimeInIntValue = 1;
-        if ((allTypedEntries / 5) <= unCorrectedError)
-            wordPerMinute = 0;
-        else
-            wordPerMinute = (((allTypedEntries / 5) - unCorrectedError)) / TimeInIntValue;
+        double TimeSpentTotalSec = delayTimeSpan.TotalSeconds;
+        if (TimeSpentTotalSec <= 1)
+            TimeSpentTotalSec = 1;
+        TimeSpentTotalSec = TimeSpentTotalSec / 60;
+
+        wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
+
         WordPerminuteText.text = "WPM :" + wordPerMinute.ToString();
 
     }

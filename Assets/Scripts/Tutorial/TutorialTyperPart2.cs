@@ -174,12 +174,7 @@ public class TutorialTyperPart2 : MonoBehaviour
             TimeSpentTotalSec = 1;
         TimeSpentTotalSec = TimeSpentTotalSec / 60;
 
-        if ((allTypedEntries / 5) <= unCorrectedError)
-            wordPerMinute = 0;
-        else
-        {
-            wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
-        }
+        wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
 
         WordPerminuteText.text = "WPM :" + wordPerMinute.ToString();
 

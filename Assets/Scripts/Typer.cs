@@ -159,13 +159,8 @@ public class Typer : MonoBehaviour
         if (TimeSpentTotalSec <= 1)
             TimeSpentTotalSec = 1;
         TimeSpentTotalSec = TimeSpentTotalSec / 60;
-        
-        if ((allTypedEntries / 5) <= unCorrectedError)
-            wordPerMinute = 0;
-        else
-        {
-            wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
-        }
+
+        wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
 
         if (!wordList.IsWordLeft() && IsWordComplete() )
         {
