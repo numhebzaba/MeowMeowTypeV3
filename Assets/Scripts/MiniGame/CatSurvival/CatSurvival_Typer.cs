@@ -150,6 +150,8 @@ public class CatSurvival_Typer : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         CheckInput();
         //SetAnimationKeyboard(currentWord);
 

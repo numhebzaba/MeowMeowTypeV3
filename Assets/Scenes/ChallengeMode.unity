@@ -12761,6 +12761,10 @@ PrefabInstance:
       value: WordList
       objectReference: {fileID: 0}
     - target: {fileID: 4040256132407906893, guid: 32ac0a7dc87d56148a0bbbfc2c3a639f, type: 3}
+      propertyPath: LimitWord
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040256132407906893, guid: 32ac0a7dc87d56148a0bbbfc2c3a639f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}

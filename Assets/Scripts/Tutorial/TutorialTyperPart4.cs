@@ -150,6 +150,8 @@ public class TutorialTyperPart4 : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         if (!IsGameFinish)
         {
             CheckInput();
@@ -223,6 +225,7 @@ public class TutorialTyperPart4 : MonoBehaviour
                 UpdateOverallAccuracy();
 
                 float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
+                Debug.Log(letter.getName + " : " + SpeedTypedOneLetter);
                 letter.UpdateSpeed(SpeedTypedOneLetter);
                 SpeedType = TimeSpan.Zero;
             }

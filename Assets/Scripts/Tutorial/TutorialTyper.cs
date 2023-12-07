@@ -46,6 +46,10 @@ public class TutorialTyper : MonoBehaviour
     LoopBg loopBg_1, loopBg_2, loopBg_3, loopBg_4;
     public GameObject loopBgArray_1, loopBgArray_2, loopBgArray_3, loopBgArray_4;
 
+    public float OverallAccuracy = 0;
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
+
+
     public Animator animator;
     public GameObject Keyboard;
     public bool IsKeyboardActive;
@@ -144,6 +148,8 @@ public class TutorialTyper : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         if (!IsGameFinish)
         {
             CheckInput();
@@ -213,6 +219,11 @@ public class TutorialTyper : MonoBehaviour
             {
                 letter.UpdateData();
                 letter.UpdateAccuracy();
+                UpdateOverallAccuracy();
+
+                float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
+                letter.UpdateSpeed(SpeedTypedOneLetter);
+                SpeedType = TimeSpan.Zero;
             }
         }
     }
@@ -382,5 +393,13 @@ public class TutorialTyper : MonoBehaviour
         DataLetterList.Add(new ListLetters("y", 0, 0, 0));
         DataLetterList.Add(new ListLetters("z", 0, 0, 0));
         DataLetterList.Add(new ListLetters(";", 0, 0, 0));
+    }
+    public void UpdateOverallAccuracy()
+    {
+
+        float OverallAccuracyTemp = (allTypedEntries - unCorrectedError);
+        OverallAccuracyTemp = OverallAccuracyTemp / allTypedEntries * 100;
+        OverallAccuracy = OverallAccuracyTemp;
+
     }
 }

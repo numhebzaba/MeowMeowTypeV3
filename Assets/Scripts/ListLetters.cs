@@ -59,7 +59,13 @@ public class ListLetters
     }
     public float GetSpeed
     {
-        get { return Speed; }
+
+        get 
+        { 
+            if(Count == 0)
+                return 0;
+            return (Speed/Count); 
+        }
     }
     public void UpdateWrongLetterData()
     {
@@ -81,10 +87,12 @@ public class ListLetters
     }
     public void UpdateSpeed(float speedInput)
     {
-        this.Speed += speedInput;
-        this.Speed = Speed / Correct;
-        float _2Diggit = (float)(Math.Truncate((double)Speed * 100.0) / 100.0);
-        this.Speed = _2Diggit;
+        this.Speed += speedInput ;
+        //this.Speed = this.Speed / this.Count;
+        //float _2Diggit = (float)Math.Round((Math.Truncate((double)Speed * 100.0) / 100.0));
+        //this.Speed = _2Diggit;
+        Debug.Log("Speed_ : " + Speed);
+
     }
     public void GetAverageAccuracyAndSpeed()
     {

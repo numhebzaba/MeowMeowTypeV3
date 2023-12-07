@@ -45,6 +45,9 @@ public class CatCustomTyper : MonoBehaviour
     LoopBg loopBg_1, loopBg_2, loopBg_3, loopBg_4;
     public GameObject loopBgArray_1, loopBgArray_2, loopBgArray_3, loopBgArray_4;
 
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
+
+
     //public GameObject Keyboard;
     public bool IsKeyboardActive;
 
@@ -127,6 +130,8 @@ public class CatCustomTyper : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         CheckInput();
         //SetAnimationKeyboard(currentWord);
 

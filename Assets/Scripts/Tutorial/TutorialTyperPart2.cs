@@ -22,6 +22,8 @@ public class TutorialTyperPart2 : MonoBehaviour
 
     bool IsGameFinish = false;
 
+    public TimeSpan SpeedType = new TimeSpan(0, 0, 0);
+
 
     public float accuracy = 0;
     public int wordTotal = 0;
@@ -144,6 +146,8 @@ public class TutorialTyperPart2 : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         if (!IsGameFinish)
         {
             CheckInput();

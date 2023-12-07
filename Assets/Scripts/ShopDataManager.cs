@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using UnityEditor;
 
 public class ShopDataManager : MonoBehaviour
 {
@@ -78,7 +79,7 @@ public class ShopDataManager : MonoBehaviour
         StartCoroutine(UpdateUsernameAuth(userData.UserName));
         //yield return new WaitForSeconds(1);
 
-        StartCoroutine(UpateDatabaseCurrencyUser());
+        StartCoroutine(UpdateDatabaseCurrencyUser());
         
 
 
@@ -104,10 +105,10 @@ public class ShopDataManager : MonoBehaviour
 
     }
 
-    public IEnumerator UpateDatabaseCurrencyUser()
+    public IEnumerator UpdateDatabaseCurrencyUser()
     {
         //Get all the users data ordered by Wpms amount
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("Shop").Child("Currency").GetValueAsync();
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("Shop").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -115,26 +116,35 @@ public class ShopDataManager : MonoBehaviour
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
         }
-        else if (DBTask.Result.Value == null)
+        else if (DBTask.Result.Value == null  )
         {
             StartCoroutine(CreateCurrencyUserData());
         }
         else
         {
             DataSnapshot snapshot = DBTask.Result ;
-
-
-            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            Debug.Log("++++++++++++++++++++++++++++++++++++");
+            Debug.Log(snapshot.Child("Skin").Exists);
+            Currency_text.text = $"{snapshot.Child("Currency").Child("Coin").Value.ToString()}";
+            if (!snapshot.Child("Skin").Exists )
             {
-
-                string coin = childSnapshot.Value.ToString();
-                Debug.Log("Coin : "+coin);
-
-                Currency_text.text = $"{coin.ToString()}";
+                StartCoroutine(CreateSkinUserData());
+                Debug.Log("----------------------------------------");
 
             }
+            //foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            //{
+
+            //    string coin = childSnapshot.Child("Coin").Value.ToString();
+
+            //    Debug.Log("Coin : "+coin);
+
+            //    Currency_text.text = $"{coin.ToString()}";
+
+            //}
 
         }
+        
         StartCoroutine(LoadSkinUserData());
     }
     public IEnumerator CreateCurrencyUserData()
@@ -300,11 +310,11 @@ public class ShopDataManager : MonoBehaviour
         {
 
         }
-        StartCoroutine(UpateDatabaseCurrencyUser());
+        StartCoroutine(UpdateDatabaseCurrencyUser());
 
         //StartCoroutine(LoadSkinUserData());
         yield return new WaitForSeconds(1);
         selectionCharacterManager.IScharacterSelected(indexSkin);
-        Debug.Log("Upated Skin already");
+        Debug.Log("Updated Skin already");
     }
 }

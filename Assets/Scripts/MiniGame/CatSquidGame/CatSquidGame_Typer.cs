@@ -150,6 +150,8 @@ public class CatSquidGame_Typer : MonoBehaviour
     }
     void Update()
     {
+        SpeedType = SpeedType + TimeSpan.FromSeconds(Time.deltaTime);
+
         CheckInput();
         //SetAnimationKeyboard(currentWord);
 

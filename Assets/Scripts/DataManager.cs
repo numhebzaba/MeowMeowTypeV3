@@ -432,7 +432,7 @@ public class DataManager : MonoBehaviour
         {
             //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
-
+            int user1stTimechecker = 0;
             //Destroy any existing scoreboard elements
             //foreach (Transform child in historyContent.transform)
             //{
@@ -444,23 +444,28 @@ public class DataManager : MonoBehaviour
             {
                 string username = childSnapshot.Child("Username").Value.ToString();
                 int ThebestWpm = int.Parse(childSnapshot.Child("Wpm").Value.ToString());
-
-                if (_Wpm > ThebestWpm)
+                if (ThebestWpm == null)
+                    ThebestWpm = 0;
+                if ( _Wpm > ThebestWpm && _username == username )
                 {
                     UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
-                    Debug.Log("1st Best Word Per Minute");
+                    Debug.Log("New Best Word Per Minute   "+ _username +" = "+ username+" : " + ThebestWpm);
                 }
-                else if (_Wpm > ThebestWpm)
+                else if (_Wpm < ThebestWpm && _username == username)
                 {
                     Debug.Log("Best Word Per Minute does not change");
                 }
-                else
+                if (username == _username)
                 {
-                    UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
-                    Debug.Log("New Best Word Per Minute");
+                    user1stTimechecker++;
                 }
-            }
 
+            }
+            if (user1stTimechecker == 0)
+            {
+                UpdateTheBestWpm(_username, _Wpm, _Date, _Time);
+                Debug.Log("1st time Best Word Per Minute!!! ");
+            }
         }
     }
     private void UpdateTheBestWpm(string _username, int _Wpm, string _Date, string _Time)

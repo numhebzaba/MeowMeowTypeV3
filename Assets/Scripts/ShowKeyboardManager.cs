@@ -40,18 +40,18 @@ public class ShowKeyboardManager : MonoBehaviour
 
         foreach(var Switches in SwitchesList)
         {
-            if(Switches.AverageAccuracy <=100 && Switches.AverageAccuracy > 75)
+            if(Switches.AverageAccuracy <=100 && Switches.AverageAccuracy > 90)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[0];
-            }else if (Switches.AverageAccuracy <= 75 && Switches.AverageAccuracy > 50)
+            }else if (Switches.AverageAccuracy <= 90 && Switches.AverageAccuracy > 80)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[1];
             }
-            else if (Switches.AverageAccuracy <= 50 && Switches.AverageAccuracy > 25)
+            else if (Switches.AverageAccuracy <= 80 && Switches.AverageAccuracy > 75)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[2];
             }
-            else if (Switches.AverageAccuracy <= 25 && Switches.AverageAccuracy > 0)
+            else if (Switches.AverageAccuracy <= 75 && Switches.AverageAccuracy > 0)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[3];
             }
@@ -78,19 +78,19 @@ public class ShowKeyboardManager : MonoBehaviour
 
         foreach (var Switches in SwitchesList)
         {
-            if (Switches.AverageSpeed <= 1 && Switches.AverageSpeed > 0)
+            if (Switches.AverageSpeed <= 0.5f && Switches.AverageSpeed > 0)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[0];
             }
-            else if (Switches.AverageSpeed <= 2 && Switches.AverageSpeed > 1)
+            else if (Switches.AverageSpeed <= 1 && Switches.AverageSpeed > 0.5f)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[1];
             }
-            else if (Switches.AverageSpeed <= 3 && Switches.AverageSpeed > 2)
+            else if (Switches.AverageSpeed <= 2 && Switches.AverageSpeed > 1)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[2];
             }
-            else if ( Switches.AverageSpeed > 3)
+            else if ( Switches.AverageSpeed > 2)
             {
                 Switches.Switch.GetComponent<Renderer>().material = materials[3];
             }

@@ -152,7 +152,7 @@ public class Typer : MonoBehaviour
     }
     void Update()
     {
-        SpeedType += TimeSpan.FromSeconds(Time.deltaTime);
+        SpeedType = SpeedType+TimeSpan.FromSeconds(Time.deltaTime);
         CheckInput();
         
         double TimeSpentTotalSec = delayTimeSpan.TotalSeconds;
@@ -174,7 +174,7 @@ public class Typer : MonoBehaviour
                 {
                     SummaryUI.SetActive(true);
                     dataManager.UploadDataButton();
-
+                    addCoin.AddCoinWhenFinish();
                 }
                 if (challengeModeDataManager != null)
                     challengeModeDataManager.UploadDataButton();
@@ -233,6 +233,7 @@ public class Typer : MonoBehaviour
 
                 float SpeedTypedOneLetter = (float)SpeedType.TotalSeconds;
                 letter.UpdateSpeed(SpeedTypedOneLetter);
+                Debug.Log("SpeedTypedOneLetter : "+ SpeedTypedOneLetter);
                 SpeedType = TimeSpan.Zero;
 
             }

@@ -131,7 +131,6 @@ public class DatamanagerOtherMode : MonoBehaviour
         if (GameMode == "Tutorial")
         {
             Date_StringValue = TutorialTyperPart4.aDate.ToString("MM:dd:yyyy hh:mm tt");
-
         }
         else if (GameMode == "MiniGame")
         {
