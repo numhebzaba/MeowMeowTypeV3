@@ -180,6 +180,8 @@ public class CatSurvival_Typer : MonoBehaviour
         TimeSpentTotalSec = TimeSpentTotalSec / 60;
 
         wordPerMinute = (int)Math.Round(((((allTypedEntries / 5) - unCorrectedError)) / TimeSpentTotalSec));
+        if (wordPerMinute <= 0)
+            wordPerMinute = 0;
 
         WordPerminuteText.text = "WPM : " + wordPerMinute.ToString();
 
