@@ -8,14 +8,15 @@ public class ListLetters
     private string name;
     private float TimeAverage;
     private float NewTime;
-    private int Correct;
-    private int Incorrect;
+    public int Correct;
+    public int Incorrect;
     private float accuracy;
-    private float Count;
+    public float Count;
     private float Speed;
 
     public float AverageAccuracy = 0;
     public float AverageSpeed = 0;
+    public float Loop = 0;
 
     public ListLetters(string name, float TimeAverage, float NewTime, float Count)
     {
@@ -96,8 +97,8 @@ public class ListLetters
     }
     public void GetAverageAccuracyAndSpeed()
     {
-        this.AverageAccuracy = this.AverageAccuracy/this.Count;
-        this.AverageSpeed = this.AverageSpeed / this.Count;
+        this.AverageAccuracy = (this.Correct / this.Count)*100;
+        this.AverageSpeed = this.AverageSpeed / this.Loop;
 
         float _2DiggitAccuracy = (float)(Math.Truncate((double)AverageAccuracy * 100.0) / 100.0);
         float _2DiggitSpeed = (float)(Math.Truncate((double)AverageSpeed * 100.0) / 100.0);

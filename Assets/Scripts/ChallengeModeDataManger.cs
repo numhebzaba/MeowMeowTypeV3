@@ -124,7 +124,7 @@ public class ChallengeModeDataManger : MonoBehaviour
         {
             case 1:
                 {
-                    if(typer.wordPerMinute >=25 && typer.OverallAccuracy >= 50)
+                    if(typer.wordPerMinute >=20 && typer.OverallAccuracy >= 50)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -138,7 +138,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 2:
                 {
-                    if (typer.wordPerMinute >= 30 && typer.OverallAccuracy >= 60)
+                    if (typer.wordPerMinute >= 25 && typer.OverallAccuracy >= 60)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -152,7 +152,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 3:
                 {
-                    if (typer.wordPerMinute >= 35 && typer.OverallAccuracy >= 70)
+                    if (typer.wordPerMinute >= 30 && typer.OverallAccuracy >= 70)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -166,7 +166,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 4:
                 {
-                    if (typer.wordPerMinute >= 40 && typer.OverallAccuracy >= 80)
+                    if (typer.wordPerMinute >= 35 && typer.OverallAccuracy >= 80)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -180,7 +180,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 5:
                 {
-                    if (typer.wordPerMinute >= 45 && typer.OverallAccuracy >= 90)
+                    if (typer.wordPerMinute >= 40 && typer.OverallAccuracy >= 90)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -194,7 +194,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 6:
                 {
-                    if (typer.wordPerMinute >= 50 && typer.OverallAccuracy >= 92)
+                    if (typer.wordPerMinute >= 45 && typer.OverallAccuracy >= 92)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -208,7 +208,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 7:
                 {
-                    if (typer.wordPerMinute >= 60 && typer.OverallAccuracy >= 94)
+                    if (typer.wordPerMinute >= 50 && typer.OverallAccuracy >= 94)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -222,7 +222,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 8:
                 {
-                    if (typer.wordPerMinute >= 70 && typer.OverallAccuracy >= 96)
+                    if (typer.wordPerMinute >= 55 && typer.OverallAccuracy >= 96)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -237,7 +237,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 9:
                 {
-                    if (typer.wordPerMinute >= 80 && typer.OverallAccuracy >= 98)
+                    if (typer.wordPerMinute >= 60 && typer.OverallAccuracy >= 98)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));
@@ -251,7 +251,7 @@ public class ChallengeModeDataManger : MonoBehaviour
                 }
             case 10:
                 {
-                    if (typer.wordPerMinute >= 100 && typer.OverallAccuracy >= 99)
+                    if (typer.wordPerMinute >= 65 && typer.OverallAccuracy >= 99)
                     {
                         SummaryUI.SetActive(true);
                         StartCoroutine(UpdateChallengeLevel(level));

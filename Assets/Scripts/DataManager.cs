@@ -356,6 +356,8 @@ public class DataManager : MonoBehaviour
                     {
                         float accuracy = float.Parse(childSnapshot2.Child("Accuracy").Value.ToString());
                         float speed = float.Parse(childSnapshot2.Child("Speed").Value.ToString());
+                        int correct = int.Parse(childSnapshot2.Child("Correct").Value.ToString());
+                        int incorrect = int.Parse(childSnapshot2.Child("Incorrect").Value.ToString());
                         Debug.Log("Date " + Date + " " + childSnapshot2.Key + " acc : " + accuracy);
                         Debug.Log("Date " + Date + " " + childSnapshot2.Key + " speed : " + speed);
 
@@ -365,7 +367,14 @@ public class DataManager : MonoBehaviour
                             {
                                 item.AverageAccuracy += accuracy;
                                 item.AverageSpeed += speed;
-                                item.UpdateData();
+
+                                item.Loop += 1;
+
+                                item.Correct += correct;
+                                item.Count += correct;
+
+                                item.Count += incorrect;
+                                //item.UpdateData();
                             }
                         }
                     }
