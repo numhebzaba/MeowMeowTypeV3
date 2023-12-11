@@ -438,7 +438,8 @@ public class DatamanagerOtherMode : MonoBehaviour
                                 item.AverageAccuracy += accuracy;
                                 item.AverageSpeed += speed;
 
-                                item.Loop += 1;
+                                if (speed > -1)
+                                    item.Loop += 1;
 
                                 item.Correct += correct;
                                 item.Count += correct;
